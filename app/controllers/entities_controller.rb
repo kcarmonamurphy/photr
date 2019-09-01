@@ -46,7 +46,7 @@ class EntitiesController < ApplicationController
   end
 
   def entity_params
-    params.require(:entity).permit(:path, :name)
+    params.require(:entity).permit(:name)
   end
 
 end

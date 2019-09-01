@@ -1,3 +1,3 @@
 class Entity < ApplicationRecord
-  validates :path, uniqueness: true
+  has_ancestry
 end
