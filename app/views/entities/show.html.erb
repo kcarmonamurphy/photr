@@ -1,0 +1,12 @@
+<h1>Showing a entity</h1>
+
+<p>
+  name: <%= @entity.name %>
+</p>
+
+<p>
+  path: <%= @entity.path %>
+</p>
+
+<%= link_to "Edit this entity", edit_entity_path(@entity) %>
+<%= link_to "Back to entities listings", entities_path %>

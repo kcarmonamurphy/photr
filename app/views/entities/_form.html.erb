@@ -1,0 +1,24 @@
+<% if @entity.errors.any? %>
+  <h2> The following errors prevented the entity from being sved</h2>
+  <ul>
+    <% @entity.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @entity do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :path %> <br />
+    <%= f.text_field :path %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+  
+<% end %>
