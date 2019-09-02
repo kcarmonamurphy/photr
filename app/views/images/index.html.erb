@@ -6,12 +6,14 @@
 
   <tr>
     <td>Name</td>
+    <td>Folder Name</td>
     <td>Image</td>
   </tr>
 
   <% @images.each do |image| %>
     <tr>
       <td><%= image.name %></td>
+      <td><%= image.folder.name if image.folder %></td>
       <td><%= image_tag image.file.variant(resize: '100x100') if image.file.attached? %></td>
       <td><%= link_to "Edit", edit_image_path(image) %></td>
       <td><%= link_to "Show", image_path(image) %></td>

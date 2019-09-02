@@ -3,11 +3,12 @@ class ImagesController < ApplicationController
   before_action :set_image, only: [:edit, :update, :show, :destroy]
 
   def new
-    @image = image.new
+    @image = Image.new
   end
 
   def create
-    @image = image.new(image_params)
+    folder = Folder.first
+    @image = Image.new(image_params.merge({ folder: folder }))
     if @image.save
       flash[:notice] = "image was created successfully"
       redirect_to image_path(@image)
@@ -30,7 +31,7 @@ class ImagesController < ApplicationController
   end
 
   def index
-    @images = image.all
+    @images = Image.all
   end
 
   def destroy
@@ -42,7 +43,7 @@ class ImagesController < ApplicationController
   private
 
   def set_image
-    @image = image.find(params[:id])
+    @image = Image.find(params[:id])
   end
 
   def image_params
