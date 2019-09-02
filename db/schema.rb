@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_205139) do
+ActiveRecord::Schema.define(version: 2019_09_02_225614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,27 @@ ActiveRecord::Schema.define(version: 2019_09_02_205139) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "entities", force: :cascade do |t|
+  create_table "folders", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
-    t.index ["ancestry"], name: "index_entities_on_ancestry"
+    t.bigint "folder_id"
+    t.index ["ancestry"], name: "index_folders_on_ancestry"
+    t.index ["folder_id"], name: "index_folders_on_folder_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.bigint "folder_id"
+    t.index ["ancestry"], name: "index_images_on_ancestry"
+    t.index ["folder_id"], name: "index_images_on_folder_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "folders", "folders"
+  add_foreign_key "images", "folders"
 end

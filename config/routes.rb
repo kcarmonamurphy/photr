@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   get '/pages/home', to: 'pages#home'
 
-  resources :entities
+  resources :images
 
 end
