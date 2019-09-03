@@ -6,5 +6,11 @@ Rails.application.routes.draw do
   get '/pages/home', to: 'pages#home'
 
   resources :images
+   
+  namespace 'api' do
+    namespace 'v1' do
+      get '*path', to: 'paths#index'
+    end
+  end
 
 end
