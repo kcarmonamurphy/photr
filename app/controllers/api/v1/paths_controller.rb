@@ -7,11 +7,24 @@ module Api
       def index
         path_array = params[:path].split('/')
 
-        records = path_array.map { |segment| Folder.find_by(name: segment) }
-        render json: records
+        first_record = Folder.find_by(name: path_array.shift)
+        last_record = get_path_record(first_record, path_array)
+
+        response = { folder: last_record }
+        response.merge!({ images: last_record.images }) if last_record.present?
+
+        render json: response
       end
 
       private
+
+      # method for recursively loading children records
+      def get_path_record(record, path_array)
+        return record if path_array.empty?
+
+        child_record = record.children.find_by(name: path_array.shift)
+        get_path_record(child_record, path_array)
+      end
 
       def set_image
         @image = Image.find(params[:path])
