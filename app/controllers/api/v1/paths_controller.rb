@@ -7,13 +7,12 @@ module Api
       def index
         path_array = params[:path].split('/')
 
-        first_record = Folder.find_by(name: path_array.shift)
-        last_record = get_last_record(first_record, path_array)
+        record = get_record(path_array)
 
-        if last_record.is_a? Folder
-          response = { folder: last_record, images: last_record.images }
-        elsif last_record.is_a? Image
-          response = { image: last_record }
+        if record.is_a? Folder
+          response = { folder: record, images: record.images }
+        elsif record.is_a? Image
+          response = { image: record }
         else
           response = {}
         end
@@ -22,6 +21,17 @@ module Api
       end
 
       private
+
+      def get_record(path_array)
+        first_segment = path_array.shift
+
+        first_folder = Folder.find_by(name: first_segment)
+        if first_folder.present?
+          get_last_record(first_folder, path_array)
+        else
+          Image.find_by(name: first_segment, folder: nil)
+        end
+      end
 
       # method for recursively loading children records
       def get_last_record(record, path_array)
@@ -34,7 +44,7 @@ module Api
         if folder.present?
           get_last_record(folder, path_array)
         else
-          return Image.find_by(name: segment, folder: record)
+          Image.find_by(name: segment, folder: record)
         end
       end
 
