@@ -65,7 +65,8 @@ end
 
 # Run against the latest stable release
 group :development, :test do
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails'
+  gem "rspec_junit_formatter"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
