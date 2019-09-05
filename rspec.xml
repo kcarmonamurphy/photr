@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="rspec" tests="0" skipped="0" failures="0" errors="0" time="0.000431" timestamp="2019-09-04T22:07:02-04:00" hostname="MacBook-Pro-de-Kevin.local">
+<testsuite name="rspec" tests="3" skipped="0" failures="3" errors="0" time="0.114201" timestamp="2019-09-05T19:10:07-04:00" hostname="MacBook-Pro-de-Kevin.local">
 <properties>
-<property name="seed" value="24712"/>
+<property name="seed" value="63019"/>
 </properties>
+<testcase classname="spec.requests.api.v1.paths_spec" name="Api::V1::Paths GET /api/v1/*path returns image json" file="./spec/requests/api/v1/paths_spec.rb" time="0.108443"><failure message="undefined method `create&apos; for #&lt;RSpec::ExampleGroups::ApiV1Paths::GETApiV1Path:0x00007f952ac20968&gt;" type="NoMethodError">Failure/Error: @folder = create(:folder)
+
+NoMethodError:
+  undefined method `create&apos; for #&lt;RSpec::ExampleGroups::ApiV1Paths::GETApiV1Path:0x00007f952ac20968&gt;
+./spec/requests/api/v1/paths_spec.rb:14:in `block (3 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.requests.api.v1.paths_spec" name="Api::V1::Paths GET /api/v1/*path returns folder and image json" file="./spec/requests/api/v1/paths_spec.rb" time="0.001328"><failure message="undefined method `create&apos; for #&lt;RSpec::ExampleGroups::ApiV1Paths::GETApiV1Path:0x00007f952bf123a0&gt;" type="NoMethodError">Failure/Error: @folder = create(:folder)
+
+NoMethodError:
+  undefined method `create&apos; for #&lt;RSpec::ExampleGroups::ApiV1Paths::GETApiV1Path:0x00007f952bf123a0&gt;
+./spec/requests/api/v1/paths_spec.rb:14:in `block (3 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.requests.api.v1.paths_spec" name="Api::V1::Paths GET /api/v1/*path returns empty json " file="./spec/requests/api/v1/paths_spec.rb" time="0.001193"><failure message="undefined method `create&apos; for #&lt;RSpec::ExampleGroups::ApiV1Paths::GETApiV1Path:0x00007f952bf20bf8&gt;" type="NoMethodError">Failure/Error: @folder = create(:folder)
+
+NoMethodError:
+  undefined method `create&apos; for #&lt;RSpec::ExampleGroups::ApiV1Paths::GETApiV1Path:0x00007f952bf20bf8&gt;
+./spec/requests/api/v1/paths_spec.rb:14:in `block (3 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
 </testsuite>
