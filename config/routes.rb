@@ -5,12 +5,21 @@ Rails.application.routes.draw do
 
   get '/pages/home', to: 'pages#home'
 
-  resources :images
+  # resources :images
    
   namespace 'api' do
     namespace 'v1' do
+
       get '*path', to: 'paths#index'
+
+      jsonapi_resources :images
+      jsonapi_resources :folders
+
+     
+      
     end
   end
+
+
 
 end
