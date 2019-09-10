@@ -7,7 +7,7 @@ Rails.application.configure do
   config.cache_classes = false
 
   # Eager load code on boot so JSONAPI-Resources resources are loaded and processed globally
-  config.eager_load = true 
+  config.eager_load = true
 
   # Show full error reports.
   config.consider_all_requests_local = true
