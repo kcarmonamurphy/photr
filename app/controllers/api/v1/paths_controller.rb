@@ -5,7 +5,8 @@ module Api
       # before_action :set_image, only: [:edit, :update, :show, :destroy]
 
       def index
-        path_array = params[:path].split('/')
+        path = params[:path] || ""
+        path_array = path.split('/')
 
         record = get_record(path_array)
 
