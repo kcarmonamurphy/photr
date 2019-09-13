@@ -1,1 +1,30 @@
-{{outlet}}
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>URL</th>
+    <th>Subfolders</th>
+    <th>Images</th>
+  </tr>
+
+    {{#each model as |folder|}}
+      <tr>
+
+      <td>{{folder.name}}</td>
+      <td>{{folder.url}}</td>
+
+      <td>
+      {{#each folder.children as |subfolder|}}
+      - {{subfolder.url}} <br />
+      {{/each}}
+      </td>
+
+      <td>
+      {{#each folder.images as |image|}}
+      - {{image.url}} <br />
+      {{/each}}
+      </td>
+
+      </tr>
+    {{/each}}
+</table>
