@@ -1,17 +1,23 @@
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>URL</th>
-    <th>Subfolders</th>
-    <th>Images</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>URL</th>
+      <th>Parent</th>
+      <th>Children</th>
+      <th>Images</th>
+    </tr>
+  </thead>
+  <tbody>
 
     {{#each model as |folder|}}
-      <tr>
+      <tr class="odd:tw-bg-gray-200">
 
       <td>{{folder.name}}</td>
       <td>{{folder.url}}</td>
+
+      <td>{{folder.parent.url}}</td>
 
       <td>
       {{#each folder.children as |subfolder|}}
@@ -27,4 +33,5 @@
 
       </tr>
     {{/each}}
+  </tbody>
 </table>

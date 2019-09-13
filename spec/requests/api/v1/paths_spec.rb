@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Api::V1::Paths', type: :request do
 
-  describe 'GET /api/v1/*path' do
+  describe 'GET /api/v1/path/*path' do
 
     before do
       @folder1 = Folder.create(name: 'folder1')
@@ -19,7 +19,7 @@ RSpec.describe 'Api::V1::Paths', type: :request do
 
     context 'root level folder' do
       before do
-        get '/api/v1/folder1'
+        get '/api/v1/path/folder1'
       end
 
       let(:root_images) { Image.where(folder: @folder1) }
@@ -37,7 +37,7 @@ RSpec.describe 'Api::V1::Paths', type: :request do
 
     context 'root level image' do
       before do
-        get '/api/v1/image1'
+        get '/api/v1/path/image1'
       end
 
       it 'returns image json' do
@@ -48,7 +48,7 @@ RSpec.describe 'Api::V1::Paths', type: :request do
 
     context '3rd level folder' do
       before do
-        get '/api/v1/folder1/folder2/folder3'
+        get '/api/v1/path/folder1/folder2/folder3'
       end
 
       let(:l3_images) { Image.where(folder: @folder3) }
@@ -67,7 +67,7 @@ RSpec.describe 'Api::V1::Paths', type: :request do
 
     context '3rd level image' do
       before do
-        get '/api/v1/folder1/folder2/image3'
+        get '/api/v1/path/folder1/folder2/image3'
       end
 
       it 'returns image json' do
@@ -78,7 +78,7 @@ RSpec.describe 'Api::V1::Paths', type: :request do
 
     context 'cannot find resource' do
       it 'returns empty json ' do
-        get "/api/v1/folder1/folder2/nonexistentfolder"
+        get "/api/v1/path/folder1/folder2/nonexistentfolder"
         expect(response).to have_http_status(200)
         expect(JSON.parse(response.body)).to be_empty
       end
