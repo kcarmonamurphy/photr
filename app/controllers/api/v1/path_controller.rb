@@ -10,16 +10,22 @@ module Api
         record = get_record(path_array)
 
         if record.is_a? Folder
-          response = JSONAPI::ResourceSerializer.new(FolderResource)
+          render json: JSONAPI::ResourceSerializer.new(FolderResource)
             .serialize_to_hash(FolderResource.new(record, nil))
         elsif record.is_a? Image
-          response = JSONAPI::ResourceSerializer.new(ImageResource)
+          render json: JSONAPI::ResourceSerializer.new(ImageResource)
             .serialize_to_hash(ImageResource.new(record, nil))
         else
-          response = {}
+          render json: {
+            errors: [
+              {
+                status: '404',
+                title: 'Record not found',
+                detail: 'Path doesn\'t exist'
+              }
+            ]
+          }, :status => 404
         end
-
-        render json: response
       end
 
       private
