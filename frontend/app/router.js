@@ -7,6 +7,8 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('path', { path: '/path/*path'});
+
   this.route('folders');
   this.route('images');
 });

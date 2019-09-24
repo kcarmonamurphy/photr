@@ -1,7 +1,6 @@
 module Api
   module V1
-    class PathsController < ApplicationController
-
+    class PathController < ApplicationController
       # before_action :set_image, only: [:edit, :update, :show, :destroy]
 
       def index
@@ -11,9 +10,11 @@ module Api
         record = get_record(path_array)
 
         if record.is_a? Folder
-          response = { folder: record, images: record.images }
+          response = JSONAPI::ResourceSerializer.new(FolderResource)
+            .serialize_to_hash(FolderResource.new(record, nil))
         elsif record.is_a? Image
-          response = { image: record }
+          response = JSONAPI::ResourceSerializer.new(ImageResource)
+            .serialize_to_hash(ImageResource.new(record, nil))
         else
           response = {}
         end

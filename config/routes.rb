@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     namespace 'v1' do
       jsonapi_resources :images
       jsonapi_resources :folders
-      get 'path(/*path)', to: 'paths#index'
+
+      get 'path(/*path)', to: 'path#index'
     end
   end
 
