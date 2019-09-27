@@ -11,6 +11,8 @@ Router.map(function() {
 
   this.route('folders');
   this.route('images');
+
+  this.route('not-found');
 });
 
 export default Router;

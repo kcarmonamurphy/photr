@@ -10,9 +10,24 @@ export default Route.extend({
 
     const response = await fetch(queryString).then(response => response.json());
 
-    const type = singularize(response.data.type)
-    const id = response.data.id;
+    if (response.data) {
+      const type = singularize(response.data.type)
+      const id = response.data.id;
 
-    return this.store.findRecord(type, id);
+      return this.store.findRecord(type, id);
+    } else {
+      throw response.errors.firstObject;
+    }
+  },
+
+  actions: {
+    error(error, transition) {
+      if (error.status === '404') {
+        this.replaceWith('not-found');
+      } else {
+        // Let the route above this handle the error.
+        return true;
+      }
+    }
   }
 });
