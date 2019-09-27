@@ -1,1 +1,5 @@
-{{debugger}}
+{{#if isFolderRoute}}
+  {{folder-view model=model}}
+{{else if isImageRoute}}
+  {{image-view model=model}}
+{{/if}}

@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import { singularize } from 'ember-inflector';
+import { computed } from '@ember/object';
 
 const host = 'http://localhost:3000';
 const namespace = 'api/v1';
@@ -18,6 +19,11 @@ export default Route.extend({
     } else {
       throw response.errors.firstObject;
     }
+  },
+
+  setupController(controller, model) {
+    this._super(controller, model);
+    controller.set('modelType', model.constructor.modelName);
   },
 
   actions: {

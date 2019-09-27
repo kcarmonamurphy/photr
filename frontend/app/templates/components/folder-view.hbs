@@ -1,0 +1,9 @@
+{{yield}}
+
+<div class="tw-flex">
+{{#each model.images as |image|}}
+  <div class="tw-w-1/4 tw-bg-gray-200 tw-h-12">
+    {{image.url}}
+  </div>
+{{/each}}
+</div>
