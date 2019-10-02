@@ -3,5 +3,7 @@ const { Model } = DS;
 
 export default Model.extend({
   name: DS.attr(),
-  url: DS.attr()
+  url: DS.attr(),
+  filePath: DS.attr(),
+  thumbnail: DS.attr()
 });

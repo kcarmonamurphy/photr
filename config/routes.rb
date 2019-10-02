@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  default_url_options host: "photr.lvh.me", port: 3000
+
   root "pages#home"
 
   get '/pages/home', to: 'pages#home'
@@ -9,13 +11,16 @@ Rails.application.routes.draw do
    
   namespace 'api' do
     namespace 'v1' do
-      jsonapi_resources :images
       jsonapi_resources :folders
+
+      jsonapi_resources :images do
+        jsonapi_relationships
+        member do
+          post 'upload_attachment', to: 'images#upload_attachment'
+        end
+      end
 
       get 'path(/*path)', to: 'path#index'
     end
   end
-
-
-
 end

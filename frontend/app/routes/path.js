@@ -1,6 +1,5 @@
 import Route from '@ember/routing/route';
 import { singularize } from 'ember-inflector';
-import { computed } from '@ember/object';
 
 const host = 'http://localhost:3000';
 const namespace = 'api/v1';
@@ -27,7 +26,7 @@ export default Route.extend({
   },
 
   actions: {
-    error(error, transition) {
+    error(error) {
       if (error.status === '404') {
         this.replaceWith('not-found');
       } else {
