@@ -11,7 +11,12 @@ Rails.application.routes.draw do
    
   namespace 'api' do
     namespace 'v1' do
-      jsonapi_resources :folders
+      jsonapi_resources :folders do
+        jsonapi_relationships
+        member do
+          post 'upload_image', to: 'folders#upload_image'
+        end
+      end
 
       jsonapi_resources :images do
         jsonapi_relationships
