@@ -8,24 +8,26 @@ Rails.application.routes.draw do
   get '/pages/home', to: 'pages#home'
 
   resources :images
-   
-  namespace 'api' do
-    namespace 'v1' do
-      jsonapi_resources :folders do
-        jsonapi_relationships
-        member do
-          post 'upload_image', to: 'folders#upload_image'
-        end
-      end
 
-      jsonapi_resources :images do
-        jsonapi_relationships
-        member do
-          post 'upload_attachment', to: 'images#upload_attachment'
+  scope format: false do
+    namespace 'api' do
+      namespace 'v1' do
+        jsonapi_resources :folders do
+          jsonapi_relationships
+          member do
+            post 'upload_image', to: 'folders#upload_image'
+          end
         end
-      end
 
-      get 'path(/*path)', to: 'path#index'
+        jsonapi_resources :images do
+          jsonapi_relationships
+          member do
+            post 'upload_attachment', to: 'images#upload_attachment'
+          end
+        end
+
+        get 'path(/*path)', to: 'path#index'
+      end
     end
   end
 end

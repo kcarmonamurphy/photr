@@ -1,0 +1,47 @@
+{{#file-dropzone name="photos" as |dropzone queue|}}
+  {{#if dropzone.active}}
+  
+    {{#if dropzone.valid}}   
+      {{#upload-drop-overlay as |overlay|}}
+        {{#overlay.message}}
+          <span class="tw-mr-2">Upload files</span>
+          {{ui-icon name="cloud-upload"}}
+        {{/overlay.message}}
+        {{#overlay.body}}
+          {{yield}}
+        {{/overlay.body}}
+      {{/upload-drop-overlay}}
+    {{else}}
+      Invalid
+    {{/if}}
+
+
+  {{else if queue.files.length}}
+    {{#upload-drop-overlay as |overlay|}}
+      {{#overlay.message}}
+        <span class="tw-mr-2">
+          Uploading {{queue.files.length}} files. ({{queue.progress}}%)
+        </span>
+        {{ui-icon name="cloud-upload"}}
+      {{/overlay.message}}
+      {{#overlay.body}}
+        {{yield}}
+      {{/overlay.body}}
+    {{/upload-drop-overlay}}
+
+  {{else}}
+    {{yield}}
+
+    {{#if dropzone.supported}}
+      Drag and drop images onto this area to upload them or
+    {{/if}}
+    {{#file-upload name="photos"
+                    for="upload-photo"
+                    accept="image/*"
+                    multiple=true
+                    onfileadd=(action uploadImage)}}
+      <a tabindex=0>Add an Image.</a>
+    {{/file-upload}}
+  {{/if}}
+
+{{/file-dropzone}}
