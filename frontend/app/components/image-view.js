@@ -9,7 +9,8 @@ export default Component.extend({
       const adapter = this.store.adapterFor("image");
       const url = adapter.buildURL("image", this.model.id) + "/upload_attachment";
       await file.upload(url);
-      // this.get("model.image").hasOne("file").reload();
+      
+      this.get("model").reload();
     },
   }
 });
