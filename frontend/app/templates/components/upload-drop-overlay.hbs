@@ -1,11 +1,7 @@
 <div class="tw-inline-block tw-relative">
-  <div class="tw-bg-white tw-opacity-0 hover:tw-opacity-75 tw-z-20 tw-absolute tw-w-full tw-h-full tw-transition-opacity tw-transition-200 tw-transition-linear tw-flex tw-justify-center">
-    <span class="tw-self-center tw-flex">
-      {{yield (hash
-        message=(component "upload-drop-overlay-message")
-      )}}
-    </span>
-  </div>
+  {{yield (hash
+    message=(component "upload-drop-overlay-message")
+  )}}
   {{yield (hash
     body=(component "upload-drop-overlay-body")
   )}}

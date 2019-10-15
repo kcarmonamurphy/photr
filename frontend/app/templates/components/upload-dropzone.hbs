@@ -3,7 +3,7 @@
   
     {{#if dropzone.valid}}   
       {{#upload-drop-overlay as |overlay|}}
-        {{#overlay.message}}
+        {{#overlay.message opacity="75"}}
           <span class="tw-mr-2">Upload files</span>
           {{ui-icon name="cloud-upload"}}
         {{/overlay.message}}
@@ -18,7 +18,7 @@
 
   {{else if queue.files.length}}
     {{#upload-drop-overlay as |overlay|}}
-      {{#overlay.message}}
+      {{#overlay.message opacity="75"}}
         <span class="tw-mr-2">
           Uploading {{queue.files.length}} files. ({{queue.progress}}%)
         </span>
@@ -30,10 +30,15 @@
     {{/upload-drop-overlay}}
 
   {{else}}
-    {{yield}}
+      {{#upload-drop-overlay as |overlay|}}
+        {{overlay.message opacity="0"}}
+        {{#overlay.body}}
+          {{yield}}
+        {{/overlay.body}}
+      {{/upload-drop-overlay}}
 
     {{#if dropzone.supported}}
-      Drag and drop images onto this area to upload them or
+      <span>Drag and drop images onto this area to upload them or</span>
     {{/if}}
     {{#file-upload name="photos"
                     for="upload-photo"
