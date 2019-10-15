@@ -1,6 +1,5 @@
 {{#file-dropzone name="photos" as |dropzone queue|}}
   {{#if dropzone.active}}
-  
     {{#if dropzone.valid}}   
       {{#upload-drop-overlay as |overlay|}}
         {{#overlay.message opacity="75"}}
@@ -12,10 +11,15 @@
         {{/overlay.body}}
       {{/upload-drop-overlay}}
     {{else}}
-      Invalid
+      {{#upload-drop-overlay as |overlay|}}
+        {{#overlay.message opacity="75"}}
+          <span class="tw-mr-2">Invalid</span>
+        {{/overlay.message}}
+        {{#overlay.body}}
+          {{yield}}
+        {{/overlay.body}}
+      {{/upload-drop-overlay}}
     {{/if}}
-
-
   {{else if queue.files.length}}
     {{#upload-drop-overlay as |overlay|}}
       {{#overlay.message opacity="75"}}
@@ -28,25 +32,17 @@
         {{yield}}
       {{/overlay.body}}
     {{/upload-drop-overlay}}
-
   {{else}}
-      {{#upload-drop-overlay as |overlay|}}
-        {{overlay.message opacity="0"}}
-        {{#overlay.body}}
-          {{yield}}
-        {{/overlay.body}}
-      {{/upload-drop-overlay}}
-
-    {{#if dropzone.supported}}
-      <span>Drag and drop images onto this area to upload them or</span>
-    {{/if}}
-    {{#file-upload name="photos"
-                    for="upload-photo"
-                    accept="image/*"
-                    multiple=true
-                    onfileadd=(action uploadImage)}}
-      <a tabindex=0>Add an Image.</a>
-    {{/file-upload}}
+    {{#upload-drop-overlay as |overlay|}}
+      {{#overlay.body}}
+        {{yield}}
+      {{/overlay.body}}
+    {{/upload-drop-overlay}}
+    {{file-upload name="photos"
+                  for="upload-photo"
+                  accept="image/*"
+                  multiple=true
+                  onfileadd=(action uploadImage)}}
   {{/if}}
 
 {{/file-dropzone}}
