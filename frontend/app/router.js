@@ -7,7 +7,9 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('path', { path: '/path/*path'});
+  this.route('path', function() {
+    this.route('wildcard', { path: '/*path'});
+  });
 
   this.route('folders');
   this.route('images');

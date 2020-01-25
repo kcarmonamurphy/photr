@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    folder = Folder.find_by(name: 'root')
+    folder = Folder.find_by(name: ROOT_FOLDER).root
     @image = Image.new(image_params.merge({ folder: folder }))
     if @image.save
       flash[:notice] = "image was created successfully"

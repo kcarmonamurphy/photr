@@ -6,7 +6,7 @@ class Image < ApplicationRecord
   belongs_to :folder, optional: true
   
   def url
-    if self.folder.present?
+    if folder_path.present?
       [folder_path, self.name].join('/')
     else
       self.name
@@ -24,6 +24,6 @@ class Image < ApplicationRecord
   private
 
   def folder_path
-    self.folder.path_ids.map { |id| Folder.find(id).name }.join('/')
+    self.folder.path.map { |folder| folder.name }.drop(1).join('/')
   end
 end

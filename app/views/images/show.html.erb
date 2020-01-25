@@ -5,7 +5,7 @@
 </p>
 
 <p>
-  folder name: <%= @image.folder.name %>
+  folder name: <%= @image.folder.name if image.folder %>
 </p>
 
 <%= link_to "Edit this image", edit_image_path(@image) %>

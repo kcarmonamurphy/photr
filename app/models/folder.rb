@@ -4,6 +4,6 @@ class Folder < ApplicationRecord
   has_many :images
 
   def url
-    self.path_ids.map { |id| Folder.find(id).name }.join('/')
+    self.path.map { |folder| folder.name }.drop(1).join('/')
   end
 end

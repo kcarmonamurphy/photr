@@ -7,6 +7,8 @@ module Api
         path = params[:path] || ""
         path_array = path.split('/')
 
+        path_array.unshift(ROOT_FOLDER)
+
         record = get_record(path_array)
 
         if record.is_a? Folder

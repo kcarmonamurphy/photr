@@ -26,6 +26,7 @@ Rails.application.routes.draw do
           end
         end
 
+        # get 'path', to: 'path#index'
         get 'path(/*path)', to: 'path#index'
       end
     end
