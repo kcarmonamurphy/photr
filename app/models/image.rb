@@ -2,8 +2,9 @@ class Image < ApplicationRecord
   include Rails.application.routes.url_helpers
 
   has_one_attached :file
+  belongs_to :folder
 
-  belongs_to :folder, optional: true
+  validates :name, presence: true
   
   def url
     if folder_path.present?
