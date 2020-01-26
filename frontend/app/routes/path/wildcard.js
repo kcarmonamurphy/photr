@@ -27,9 +27,14 @@ export default Route.extend({
 
   actions: {
     error(error) {
-      if (error.status === '404') {
-        this.replaceWith('not-found');
-      } else {
+      if (error.message == 'You must provide a param `path`.') {
+        // we don't care about this error. squelch it.
+        return false;
+      }
+      else if (error.status === '404') {
+        return true;
+      }
+      else {
         // Let the route above this handle the error.
         return true;
       }
