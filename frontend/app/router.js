@@ -11,6 +11,8 @@ Router.map(function() {
     this.route('wildcard', { path: '/*path'});
   });
 
+  this.route('login');
+
   this.route('folders');
   this.route('images');
 
