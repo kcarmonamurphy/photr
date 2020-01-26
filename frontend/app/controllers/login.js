@@ -7,15 +7,15 @@ export default Controller.extend({
 
   actions: {
     async authenticate() {
-      let { identification, password } = this.getProperties('identification', 'password');
+      let { email, password } = this.getProperties('email', 'password');
       try {
-        await this.session.authenticate('authenticator:oauth2', identification, password);
+        await this.session.authenticate('authenticator:oauth2', email, password);
       } catch(error) {
         this.set('errorMessage', error.error || error);
       }
 
       if (this.session.isAuthenticated) {
-        // What to do with all this success?
+        this.transitionToRoute('authenticated.path')
       }
     }
   }
