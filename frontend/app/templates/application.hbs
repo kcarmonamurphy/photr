@@ -1,12 +1,10 @@
-
-  
 <div class="tw-bg-gray-900 tw-flex tw-items-center tw-justify-between">
-  <span>
+  {{#link-to 'authenticated.path' class="tw-text-white"}}
     <h1 class="tw-text-xl tw-text-white tw-mx-3 tw-my-1">Photr</h1>
-  </span>
+  {{/link-to}}
   <span class="tw-mx-3 tw-my-1">
     {{#if session.isAuthenticated}}
-      <a class="tw-text-white" {{action 'invalidateSession'}}>Logout</a>
+      <a class="tw-text-white tw-cursor-pointer" {{action 'invalidateSession'}}>Logout</a>
     {{else}}
       {{#link-to 'login' class="tw-text-white"}}Login{{/link-to}}
     {{/if}}

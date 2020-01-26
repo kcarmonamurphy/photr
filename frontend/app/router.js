@@ -10,6 +10,7 @@ Router.map(function() {
 
   this.route('authenticated', { path: '' }, function() {
     this.route('path', function() {
+      this.route('root', { path: '' });
       this.route('wildcard', { path: '/*path'});
     });
 
