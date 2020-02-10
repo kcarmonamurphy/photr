@@ -14,8 +14,10 @@ Doorkeeper.configure do
   end
 
   resource_owner_from_credentials do
-    User.find_by(email: params[:username])
+    user = User.find_by(email: params[:username])
         .try(:authenticate, params[:password])
+
+    user ? user : nil
   end
 
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
@@ -38,12 +40,12 @@ Doorkeeper.configure do
   # want to use API mode that will skip all the views management and change the way how
   # Doorkeeper responds to a requests.
   #
-  # api_only
+  api_only
 
   # Enforce token request content type to application/x-www-form-urlencoded.
   # It is not enabled by default to not break prior versions of the gem.
   #
-  # enforce_content_type
+  enforce_content_type
 
   # Authorization Code expiration time (default: 10 minutes).
   #

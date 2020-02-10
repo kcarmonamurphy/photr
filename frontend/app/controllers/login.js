@@ -11,7 +11,11 @@ export default Controller.extend({
       try {
         await this.session.authenticate('authenticator:oauth2', email, password);
       } catch(error) {
-        this.set('errorMessage', error.error || error);
+        if (error.error == 'invalid_grant') {
+          this.set('errorMessage', "Invalid email or password");
+        } else {
+          this.set('errorMessage', "Something went wrong");
+        }
       }
 
       if (this.session.isAuthenticated) {

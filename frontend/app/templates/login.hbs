@@ -1,11 +1,33 @@
-{{!-- app/templates/login.hbs --}}
-<form {{action 'authenticate' on='submit'}}>
-  <label for="email">Login</label>
-  {{input id='email' placeholder='Enter Email' value=email}}
-  <label for="password">Password</label>
-  {{input id='password' placeholder='Enter Password' type='password' value=password}}
-  <button type="submit">Login</button>
-  {{#if errorMessage}}
-    <p>{{errorMessage}}</p>
-  {{/if}}
-</form>
+<div class="tw-container tw-mx-auto tw-px-4">
+  <form {{action 'authenticate' on='submit'}}>
+    {{#ui/form-group
+      for="email"
+      label="Login"
+    }}
+      {{ui/text-input
+        id="email"
+        name="email"
+        placeholder="Email"
+        label="Email"
+        value=email
+      }}
+    {{/ui/form-group}}
+
+    {{#ui/form-group
+      for="password"
+      label="Password"
+    }}
+      {{ui/text-input
+        id="password"
+        inputType="password"
+        placeholder="Password"
+        value=password
+      }}
+    {{/ui/form-group}}
+
+    <button type="submit">Login</button>
+    {{#if errorMessage}}
+      <p>{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>
