@@ -17,7 +17,7 @@ RSpec.describe 'Api::V1::Path', type: :request do
       expect(response).to have_http_status(404)
     end
   end
-  
+
   describe 'GET /api/v1/path/*path' do
 
     before do
@@ -44,6 +44,11 @@ RSpec.describe 'Api::V1::Path', type: :request do
       it 'returns folder json' do
         expect(JSON.parse(response.body)['data']['type']).to eq(@folder1.model_name.plural)
       end
+
+      it 'returns correct url' do
+        url = JSON.parse(response.body)['data']['attributes']['url']
+        expect(url).to eq('folder1')
+      end
     end
 
     context 'root level image' do
@@ -56,6 +61,11 @@ RSpec.describe 'Api::V1::Path', type: :request do
 
       it 'returns image json' do
         expect(JSON.parse(response.body)['data']['type']).to eq(@image1.model_name.plural)
+      end
+
+      it 'returns correct url' do
+        url = JSON.parse(response.body)['data']['attributes']['url']
+        expect(url).to eq('image1')
       end
     end
 
@@ -75,7 +85,8 @@ RSpec.describe 'Api::V1::Path', type: :request do
       end
 
       it 'returns correct url' do
-        expect(JSON.parse(response.body)['data']['attributes']['url']).to eq('folder1/folder2/folder3')
+        url = JSON.parse(response.body)['data']['attributes']['url']
+        expect(url).to eq('folder1/folder2/folder3')
       end
     end
 
@@ -93,7 +104,13 @@ RSpec.describe 'Api::V1::Path', type: :request do
       end
 
       it 'returns correct associated folder resource json' do
-        expect(JSON.parse(response.body)['data']['relationships']['folder']['links']['related']).to eq("/api/v1/images/#{@image3.id}/folder")
+        related_folder_link = JSON.parse(response.body)['data']['relationships']['folder']['links']['related']
+        expect(related_folder_link).to eq("/api/v1/images/#{@image3.id}/folder")
+      end
+
+      it 'returns correct url' do
+        url = JSON.parse(response.body)['data']['attributes']['url']
+        expect(url).to eq('folder1/folder2/image3')
       end
     end
 

@@ -7,6 +7,12 @@ class Folder < ApplicationRecord
   validates :name, presence: true
 
   def url
-    self.path.map { |folder| folder.name }.drop(1).join('/')
+    folder_path_arr.join('/')
+  end
+
+  private
+
+  def folder_path_arr
+    self.path.pluck(:name).drop(1)
   end
 end
