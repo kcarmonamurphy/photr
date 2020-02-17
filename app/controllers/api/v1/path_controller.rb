@@ -35,12 +35,9 @@ module Api
       def get_record(path_array)
         first_segment = path_array.shift
 
-        first_folder = Folder.find_by(name: first_segment)
-        if first_folder.present?
-          get_last_record(first_folder, path_array)
-        else
-          Image.find_by(name: first_segment, folder: nil)
-        end
+        root_folder = Folder.find_by(name: first_segment)
+
+        get_last_record(root_folder, path_array)
       end
 
       # method for recursively loading children records
@@ -61,10 +58,6 @@ module Api
       def set_image
         @image = Image.find(params[:path])
       end
-
-      # def image_params
-      #   params.require(:image).permit(:name, :file)
-      # end
     end
 
   end
