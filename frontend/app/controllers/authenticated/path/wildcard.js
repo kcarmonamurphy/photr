@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   init() {
@@ -12,5 +13,13 @@ export default Controller.extend({
 
   isFolderRoute: computed('model', function() {
     return this.modelType == 'folder';
-  })
+  }),
+
+  session: service(),
+
+  actions: {
+    invalidateSession() {
+      this.get('session').invalidate();
+    }
+  }
 });
