@@ -7,12 +7,6 @@ class Image < ApplicationRecord
   validates :name, presence: true
   
   def url
-    # if folder_path_arr.present?
-    #   [folder_path_arr, self.name].join('/')
-    # else
-    #   self.name
-    # end
-
     url_parts.join('/')
   end
 

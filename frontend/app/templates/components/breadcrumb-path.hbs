@@ -1,3 +1,12 @@
-{{yield}}
-
-{{log model}}
+<div class="tw-bg-gray-900 tw-flex tw-items-center tw-px-3 tw-py-2">
+  {{#each breadcrumbs as |breadcrumb index|}}
+    {{#if index}}
+      <span class="tw-text-gray-500 tw-mx-2">
+        >
+      </span>
+    {{/if}}
+    {{#link-to 'authenticated.path.wildcard' breadcrumb.url class="tw-text-gray-500"}}
+      {{breadcrumb.name}}
+    {{/link-to}}
+  {{/each}}
+</div>

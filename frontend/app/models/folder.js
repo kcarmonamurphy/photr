@@ -4,6 +4,7 @@ const { Model } = DS;
 export default Model.extend({
   name: DS.attr(),
   url: DS.attr(),
+  breadcrumbs: DS.attr(),
 
   images: DS.hasMany('image'),
 

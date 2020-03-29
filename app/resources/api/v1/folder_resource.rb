@@ -1,5 +1,5 @@
 class Api::V1::FolderResource < JSONAPI::Resource
-  attributes :name, :url
+  attributes :name, :url, :breadcrumbs
   has_many :images
 
   # ancestry
