@@ -1,10 +1,12 @@
 class Folder < ApplicationRecord
+  include Breadcrumbable
+
   has_ancestry
   has_many :images
 
   # at most one root folder should exist
   validates :ancestry, presence: true, if: Proc.new { Folder.roots.count > 0 }
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   def url
     folder_path_arr.join('/')
@@ -12,18 +14,6 @@ class Folder < ApplicationRecord
 
   def url_parts
     folder_path_arr
-  end
-
-  def breadcrumbs
-    url_parts.map.with_index do |_, index|
-      a = url_parts[0..index].inject({url: [], name: nil}) do |memo, value|
-        memo[:url] << value
-        memo[:name] = value
-        memo
-      end
-      a[:url] = a[:url].join('/')
-      a
-    end
   end
 
   private
