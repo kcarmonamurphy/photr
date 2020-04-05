@@ -6,10 +6,12 @@ export default Component.extend({
   flashMessages: service(),
   fileQueue: service(),
 
-  flushFailedFiles() {
+  flushSettledFiles() {
     let photosQueue = this.fileQueue.find('photos');
-    let failedFiles = photosQueue.files.filter(file => file.state === 'failed');
-    failedFiles.forEach(file => photosQueue.remove(file))
+    let settledFiles = photosQueue.files.filter(file => {
+      return ['uploaded', 'aborted', 'failed'].includes(file.state);
+    });
+    settledFiles.forEach(file => photosQueue.remove(file))
   },
 
   actions: {
@@ -23,8 +25,8 @@ export default Component.extend({
       }).catch(response => {
         let msg = response.body.errors.map(arr => arr.title).join('; ')
         this.flashMessages.danger(msg);
-        this.flushFailedFiles();
-      });
+        this.flushSettledFiles()
+      })
       
       return this.get("model").hasMany("images").reload();
     },
