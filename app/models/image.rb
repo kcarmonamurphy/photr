@@ -5,7 +5,10 @@ class Image < ApplicationRecord
   has_one_attached :file
   belongs_to :folder
 
-  validates :name, presence: true, uniqueness: { scope: :folder_id }
+  validates :name, presence: true, uniqueness: {
+    scope: :folder_id,
+    message: 'An image with this filename already exists in this folder.'
+  }
   
   def url
     url_parts.join('/')

@@ -3,7 +3,7 @@ module ErrorSerializer
     return if errors.nil?
 
     json = {}
-    new_hash = errors.to_hash(true).map do |k, v|
+    new_hash = errors.to_hash.map do |k, v|
       v.map do |msg|
         { id: k, title: msg }
       end

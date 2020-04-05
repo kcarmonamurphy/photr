@@ -9,7 +9,6 @@ module Api
 
         filename = params[:file].original_filename
 
-
         image = Image.new(name: filename, folder: folder)
         if image.save
           file = image.file.attach(params[:file])
