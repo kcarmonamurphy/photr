@@ -9,7 +9,9 @@ export default Component.extend({
     async uploadImage(file) {
       const adapter = this.store.adapterFor("folder");
       const url = adapter.buildURL("folder", this.model.id) + "/upload_image";
-      await file.upload(url);
+      await file.upload(url).catch(error => {
+        debugger;
+      });
       
       this.get("model").hasMany("images").reload();
     },

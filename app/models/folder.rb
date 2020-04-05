@@ -6,7 +6,7 @@ class Folder < ApplicationRecord
 
   # at most one root folder should exist
   validates :ancestry, presence: true, if: Proc.new { Folder.roots.count > 0 }
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { scope: :ancestry }
 
   def url
     folder_path_arr.join('/')
