@@ -2,6 +2,13 @@ import Route from '@ember/routing/route';
 import { singularize } from 'ember-inflector';
 
 export default Route.extend({
+  async model() {
+    const adapter = this.store.adapterFor('path');
+    const queryString = adapter.buildURL('path');
+
+    return await this.fetchRecords(queryString);
+  },
+
   async fetchRecords(queryString) {
     const response = await fetch(queryString).then(response => response.json());
 
@@ -13,13 +20,6 @@ export default Route.extend({
     } else {
       throw response.errors.firstObject;
     }
-  },
-
-  async model() {
-    const adapter = this.store.adapterFor('path');
-    const queryString = adapter.buildURL('path');
-
-    return await this.fetchRecords(queryString);
   },
 
   controllerName: 'authenticated.path.wildcard',

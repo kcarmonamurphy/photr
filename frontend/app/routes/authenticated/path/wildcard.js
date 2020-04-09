@@ -1,43 +1,10 @@
-import Route from '@ember/routing/route';
-import { singularize } from 'ember-inflector';
+import RootPathRoute from './root';
 
-const host = 'http://localhost:3000';
-const namespace = 'api/v1';
-
-export default Route.extend({
+export default RootPathRoute.extend({
   async model({ path }) {
-    const queryString = `${host}/${namespace}/path/${path}`;
+    const adapter = this.store.adapterFor('path');
+    const queryString = adapter.buildURL('path');
 
-    const response = await fetch(queryString).then(response => response.json());
-
-    if (response.data) {
-      const type = singularize(response.data.type)
-      const id = response.data.id;
-
-      return this.store.findRecord(type, id);
-    } else {
-      throw response.errors.firstObject;
-    }
-  },
-
-  setupController(controller, model) {
-    this._super(controller, model);
-    controller.set('modelType', model.constructor.modelName);
-  },
-
-  actions: {
-    error(error) {
-      if (error.message == 'You must provide a param `path`.') {
-        // we don't care about this error. squelch it.
-        return false;
-      }
-      else if (error.status === '404') {
-        return true;
-      }
-      else {
-        // Let the route above this handle the error.
-        return true;
-      }
-    }
+    return await this.fetchRecords(`${queryString}/${path}`);
   }
 });
