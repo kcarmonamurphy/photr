@@ -14,6 +14,12 @@ Router.map(function() {
       this.route('wildcard', { path: '/*path'});
     });
 
+    this.route('users', function() {
+      this.route('new');
+      this.route('edit', { path: '/:id/edit' });
+      this.route('detail', { path: '/:id' });
+    });
+
     this.route('folders');
     this.route('images');
   });

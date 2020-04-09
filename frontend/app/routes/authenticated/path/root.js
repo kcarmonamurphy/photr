@@ -1,21 +1,8 @@
-// import Route from '@ember/routing/route';
-
-// export default class IndexRoute extends Route {
-//   beforeModel(/* transition */) {
-//     this.replaceWith('authenticated.path.wildcard', ''); // Implicitly aborts the on-going transition.
-//   }
-// }
-
 import Route from '@ember/routing/route';
 import { singularize } from 'ember-inflector';
 
-const host = 'http://localhost:3000';
-const namespace = 'api/v1';
-
 export default Route.extend({
-  async model() {
-    const queryString = `${host}/${namespace}/path`;
-
+  async fetchRecords(queryString) {
     const response = await fetch(queryString).then(response => response.json());
 
     if (response.data) {
@@ -26,6 +13,13 @@ export default Route.extend({
     } else {
       throw response.errors.firstObject;
     }
+  },
+
+  async model() {
+    const adapter = this.store.adapterFor('path');
+    const queryString = adapter.buildURL('path');
+
+    return await this.fetchRecords(queryString);
   },
 
   controllerName: 'authenticated.path.wildcard',

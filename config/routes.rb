@@ -27,6 +27,10 @@ Rails.application.routes.draw do
           end
         end
 
+        jsonapi_resources :users do
+          jsonapi_relationships
+        end
+
         get 'path(/*path)', to: 'path#index'
       end
     end

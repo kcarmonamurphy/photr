@@ -1,0 +1,8 @@
+<h1>Hello</h1>
+
+{{#each model.users as |user|}}
+  {{user.email}}
+  {{user.createdAt}}
+  {{user.updatedAt}}
+  {{user.active}}
+{{/each}}
