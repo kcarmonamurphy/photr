@@ -1,8 +1,8 @@
-<h1>Hello</h1>
-
-{{#each model.users as |user|}}
-  {{user.email}}
-  {{user.createdAt}}
-  {{user.updatedAt}}
-  {{user.active}}
-{{/each}}
+<EmberTable as |t|>
+  <t.head
+    @columns={{columns}}
+    @widthConstraint={{widthConstraint}}
+    @resizeMode={{if (eq widthConstraint 'eq-container') 'fluid' 'standard'}}
+   />
+  <t.body @rows={{rows}} />
+</EmberTable>
