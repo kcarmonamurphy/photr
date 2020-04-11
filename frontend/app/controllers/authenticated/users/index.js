@@ -1,18 +1,15 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-  rows: computed('model', function() {
-    return this.model.toArray()
-  }),
   init() {
     this._super(...arguments);
 
-    let columns = [
+    this.columns = [
       {
         name: `ID`,
         valuePath: `id`,
+        textAlign: 'left',
+        isFixed: 'left'
       },
       {
         name: 'Email',
@@ -24,17 +21,8 @@ export default Controller.extend({
       },
       {
         name: 'Updated At',
-        valuePath: `updatedAt`
+        valuePath: `updatedAt`,
       }
     ];
-    this.columns = columns.map(column => {
-      return {
-        ...column,
-        textAlign: 'left',
-        isFixed: 'left'
-      }
-    })
-
-    this.widthConstraint = 'eq-container';
   }
 });

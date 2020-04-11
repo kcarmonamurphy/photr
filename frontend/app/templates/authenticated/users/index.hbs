@@ -1,8 +1,3 @@
-<EmberTable as |t|>
-  <t.head
-    @columns={{columns}}
-    @widthConstraint={{widthConstraint}}
-    @resizeMode={{if (eq widthConstraint 'eq-container') 'fluid' 'standard'}}
-   />
-  <t.body @rows={{rows}} />
-</EmberTable>
+<div class="tw-m-4">
+  {{ui-table columns=columns rows=model}}
+</div>

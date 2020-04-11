@@ -1,0 +1,13 @@
+<EmberTable as |t|>
+  <t.head
+    @columns={{_columns}}
+    @widthConstraint={{_widthConstraint}}
+    @resizeMode={{if (eq _widthConstraint 'eq-container') 'fluid' 'standard'}}
+    @fillMode='equal-column'
+   />
+  <t.body
+    @rows={{_rows}}
+    @onSelect={{action (mut selection)}}
+    @selection={{selection}}
+  />
+</EmberTable>
