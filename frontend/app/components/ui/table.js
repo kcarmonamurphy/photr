@@ -10,8 +10,13 @@ export default Component.extend({
   },
 
   applyDefaultProperties(column) {
-    let textAlign = column.textAlign || 'left';
-    return { ...column, textAlign }
+    return {
+      ...column,
+      textAlign: column.textAlign || 'left',
+      headerComponent: column.headerComponent || 'ui/table/header',
+      cellComponent: column.cellComponent || 'ui/table/cell',
+      color: column.color || 'gray-200'
+     }
   },
 
   _columns: computed('columns', function() {

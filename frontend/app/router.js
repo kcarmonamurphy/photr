@@ -20,6 +20,10 @@ Router.map(function() {
       this.route('detail', { path: '/:id' });
     });
 
+    this.route('roles', function() {
+      this.route('detail', { path: '/:id' });
+    });
+
     this.route('folders');
     this.route('images');
   });

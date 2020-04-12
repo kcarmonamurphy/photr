@@ -11,23 +11,27 @@ export default Controller.extend({
         textAlign: 'left',
         isFixed: 'left',
         cellComponent: 'ui/table/cell-link',
-        route: 'authenticated.users.detail'
+        route: 'authenticated.roles.detail'
       },
       {
-        name: 'Email',
-        valuePath: `email`,
+        name: 'Name',
+        valuePath: `name`,
+      },
+      {
+        name: 'Description',
+        valuePath: `description`
       },
       {
         name: 'Created At',
-        valuePath: `createdAt`
+        valuePath: `createdAt`,
       },
       {
         name: 'Updated At',
         valuePath: `updatedAt`,
       },
       {
-        name: 'Roles',
-        valuePath: 'rolesStringified'
+        name: 'Users',
+        valuePath: 'usersStringified'
       }
     ];
   }

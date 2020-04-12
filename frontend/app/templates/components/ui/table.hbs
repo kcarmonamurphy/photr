@@ -1,0 +1,31 @@
+<EmberTable as |t|>
+  <t.head
+    @columns={{_columns}}
+    @widthConstraint={{_widthConstraint}}
+    @resizeMode={{if (eq _widthConstraint 'eq-container') 'fluid' 'standard'}}
+    @fillMode='equal-column' as |h|>
+    <h.row as |r|>
+      <r.cell as |column|>
+        {{component column.headerComponent value=column.name}}
+      </r.cell>
+    </h.row>
+  </t.head>
+
+  <t.body
+    @rows={{_rows}}
+    @onSelect={{action (mut selection)}}
+    @selection={{selection}} as |b|>
+    <b.row as |r|>
+      <r.cell as |cell column|>
+        {{#if (eq column.cellComponent "ui/table/cell-link")}}
+          <Ui::Table::CellLink
+            @value={{cell}}
+            @route={{column.route}}>
+          </Ui::Table::CellLink>
+        {{else}}
+          {{component column.cellComponent value=cell}}
+        {{/if}}
+      </r.cell>
+    </b.row>
+  </t.body>
+</EmberTable>

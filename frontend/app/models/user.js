@@ -1,9 +1,14 @@
 import DS from 'ember-data';
-const { Model } = DS;
+import { computed } from '@ember/object';
 
-export default Model.extend({
+export default DS.Model.extend({
   email: DS.attr('string'),
   createdAt: DS.attr('string'),
   updatedAt: DS.attr('string'),
-  active: DS.attr('bool')
+  roles: DS.hasMany(),
+
+  rolesStringified: computed('roles', function() {
+    return this.roles.map(role => role.name).join(', ');
+  })
+
 });
