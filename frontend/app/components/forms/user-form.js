@@ -18,7 +18,7 @@ export default Component.extend({
     // let translationString = this.flashMessageTranslation(changeset)
     return changeset.save()
       .then((model) => {
-        debugger;
+        alert('submitted')
         // this.transitionToRoute(toRoute, ...models).then(() => {
         //   let modelName = underscore(model.get('constructor.modelName'))
         //   this.showFlashMessage(modelName, translationString)
@@ -26,7 +26,7 @@ export default Component.extend({
       })
       .catch(() => {
         // this.changesetError(changeset);
-        debugger;
+        alert('error')
       });
   }
 });
