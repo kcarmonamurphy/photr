@@ -1,0 +1,7 @@
+<form 
+  onsubmit={{action "submit"}}>
+  {{yield (hash
+    object=this.object
+    submit=(component "ui/button" onClick=(action "submit") type="submit" isRunning=performSubmit.isRunning)
+  )}}
+</form>
