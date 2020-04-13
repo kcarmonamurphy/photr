@@ -14,6 +14,10 @@ export default Controller.extend({
         route: 'authenticated.users.detail'
       },
       {
+        name: 'Name',
+        valuePath: 'name'
+      },
+      {
         name: 'Email',
         valuePath: `email`,
       },
