@@ -2,6 +2,7 @@
   onsubmit={{action "submit"}}>
   {{yield (hash
     object=this.object
+    text-input=(component "ui/text-input" object=this.object)
     submit=(component "ui/button" onClick=(action "submit") type="submit" isRunning=performSubmit.isRunning)
   )}}
 </form>

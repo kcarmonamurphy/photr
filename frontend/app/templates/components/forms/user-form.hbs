@@ -1,0 +1,51 @@
+  <Ui::Form @object={{this.changeset}} @onSubmit={{action 'formSubmit'}} as |form|>
+    {{ui/heading level=2 text=model.name}}
+
+    <hr class="tw-my-2">
+
+    <div class="tw-my-2">
+      {{ui/heading level=4 text="Name"}}
+      {{form.text-input
+        id="name"
+        name="name"
+        placeholder="Name"
+        label="Name"
+        value=model.name
+      }}
+    </div>
+
+    <div class="tw-my-2">
+      {{ui/heading level=4 text="Email"}}
+      {{form.text-input
+        id="email"
+        name="email"
+        placeholder="Email"
+        label="Email"
+        value=model.email
+      }}
+    </div>
+
+    <div class="tw-my-2">
+      {{ui/heading level=4 text="New Password"}}
+      {{ui/text-input
+        id="password"
+        name="password"
+        placeholder="Enter a new password"
+        label="Password"
+        value=model.password
+      }}
+    </div>
+
+    <hr class="tw-my-2">
+
+    <div class="tw-my-2">
+      <Ui::LinkTo @route="authenticated.users.index" class="tw-mr-2">
+        Back to users list
+      </Ui::LinkTo>
+      {{!-- <Ui::Button onclick={{action "submit"}}>
+        Submit
+      </Ui::Button> --}}
+      <form.submit>Submit</form.submit>
+    </div>
+
+  </Ui::Form>
