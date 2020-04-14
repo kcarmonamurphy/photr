@@ -1,46 +1,94 @@
   <Ui::Form @object={{this.changeset}} @onSubmit={{action 'formSubmit'}} as |form|>
+    {{#if isEditing}}
+      <Ui::Heading @level={{2}}>Edit user {{this.changeset.id}}</Ui::Heading>
+    {{else}}
+      <Ui::Heading @level={{2}}>View user {{this.changeset.id}}</Ui::Heading>
+    {{/if}}
 
-    <div class="tw-flex tw-justify-between tw-items-center tw-my-2">
-      {{ui/heading level=2 text="Edit user"}}
-      <div>
-        <Ui::LinkTo @route="authenticated.users.index" class="tw-mr-2">
-          Back to users list
-        </Ui::LinkTo>
-        <form.submit>Submit</form.submit>
+    <div class="tw-my-2">
+      <Ui::Heading @level={{4}}>Name</Ui::Heading>
+      {{#if isEditing}}
+        <form.text-input
+          @id="name"
+          @name="name"
+          @placeholder="Name"
+          @label="Name"
+          @value={{model.name}}
+        />
+      {{else}}
+        <div class="tw-h-10 tw-items-center tw-flex">
+          <Ui::Text @text={{model.name}} />
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="tw-my-2">
+      <Ui::Heading @level={{4}}>Email</Ui::Heading>
+      {{#if isEditing}}
+        <form.text-input
+          @id="email"
+          @name="email"
+          @placeholder="Email"
+          @label="Email"
+          @value={{model.email}}
+        />
+      {{else}}
+        <div class="tw-h-10 tw-items-center tw-flex">
+          <Ui::Text @text={{model.email}} />
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="tw-my-2">
+      <Ui::Heading @level={{4}}>Password</Ui::Heading>
+      {{#if isEditing}}
+        <form.text-input
+          @id="password"
+          @name="password"
+          @placeholder="Password"
+          @label="Password"
+          @value={{model.password}}
+        />
+      {{else}}
+        <div class="tw-h-10 tw-items-center tw-flex">
+          <Ui::Text @text="*******" />
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="tw-my-2">
+      <Ui::Heading @level={{4}}>Created At</Ui::Heading>
+      <div class="tw-h-10 tw-items-center tw-flex">
+        <Ui::Text @text={{model.createdAt}} />
       </div>
     </div>
 
     <div class="tw-my-2">
-      {{ui/heading level=4 text="Name"}}
-      {{form.text-input
-        id="name"
-        name="name"
-        placeholder="Name"
-        label="Name"
-        value=model.name
-      }}
+      <Ui::Heading @level={{4}}>Updated At</Ui::Heading>
+      <div class="tw-h-10 tw-items-center tw-flex">
+        <Ui::Text @text={{model.updatedAt}} />
+      </div>
     </div>
 
-    <div class="tw-my-2">
-      {{ui/heading level=4 text="Email"}}
-      {{form.text-input
-        id="email"
-        name="email"
-        placeholder="Email"
-        label="Email"
-        value=model.email
-      }}
-    </div>
+    <hr class="tw-my-6">
 
-    <div class="tw-my-2">
-      {{ui/heading level=4 text="New Password"}}
-      {{ui/text-input
-        id="password"
-        name="password"
-        placeholder="Enter a new password"
-        label="Password"
-        value=model.password
-      }}
-    </div>
+    <div class="tw-flex tw-justify-between tw-items-center">
+      {{#if isEditing}}
+        <Ui::LinkTo @type="tertiary" @route="authenticated.users.detail" @model={{model.id}}>
+          Cancel
+        </Ui::LinkTo>
+      {{else}}
+        <Ui::LinkTo @type="tertiary" @route="authenticated.users.index">
+          Back to users list
+        </Ui::LinkTo>
+      {{/if}}
 
+      {{#if isEditing}}
+        <form.submit>Submit</form.submit>
+      {{else}}
+        <Ui::LinkTo @type="primary" @route="authenticated.users.edit" @model={{model.id}}>
+          Edit
+        </Ui::LinkTo> 
+      {{/if}}
+    </div>
   </Ui::Form>

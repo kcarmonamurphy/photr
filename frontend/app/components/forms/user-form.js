@@ -1,7 +1,11 @@
 import Component from '@ember/component';
 import Changeset from 'ember-changeset';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
+  flashMessages: service(),
+  router: service(),
+
   init() {
     this._super(...arguments);
     this.changeset = new Changeset(this.model);
@@ -15,18 +19,15 @@ export default Component.extend({
   },
 
   submitNewChangeset(changeset) {
-    // let translationString = this.flashMessageTranslation(changeset)
     return changeset.save()
       .then((model) => {
-        alert('submitted')
-        // this.transitionToRoute(toRoute, ...models).then(() => {
-        //   let modelName = underscore(model.get('constructor.modelName'))
-        //   this.showFlashMessage(modelName, translationString)
-        // })
+        this.get('router').transitionTo('authenticated.users.detail', model).then(() => {
+          let modelName = model.get('constructor.modelName')
+          this.flashMessages.success(`${modelName} submitted successfully`);
+        })
       })
-      .catch(() => {
-        // this.changesetError(changeset);
-        alert('error')
+      .catch((error) => {
+        this.flashMessages.danger(`Error: ${error}`);
       });
   }
 });

@@ -12,8 +12,6 @@ export default FormFieldComponent.extend({
 
   textSize: 'lg',
   textColor: 'ui-black-100',
-  bold: false,
-  italics: false,
-
+  
   classNames: ['tw-font-body', 'tw-break-words', 'tw-leading-normal']
 });
