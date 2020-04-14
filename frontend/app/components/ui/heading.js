@@ -8,7 +8,7 @@ export default Component.extend({
     let { tagName, textSize } = this.options(level);
 
     this.tagName = tagName;
-    this.classNames = [`tw-text-${textSize}`];
+    this.classNames = [`tw-text-${textSize}`, 'tw-font-bold'];
   },
 
   options(level) {

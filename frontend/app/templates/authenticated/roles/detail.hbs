@@ -1,5 +1,41 @@
-{{model.name}}
-{{model.description}}
-{{model.createdAt}}
-{{model.updatedAt}}
-{{model.usersStringified}}
+<div class="tw-m-4">
+  <Ui::Heading @level={{2}}>
+    Role: {{model.name}}
+  </Ui::Heading>
+
+  <div class="tw-my-2">
+    <Ui::Heading @level={{4}}>Description</Ui::Heading>
+    <div class="tw-h-10 tw-items-center tw-flex">
+      <Ui::Text @text={{model.description}} />
+    </div>
+  </div>
+
+  <div class="tw-my-2">
+    <Ui::Heading @level={{4}}>Users</Ui::Heading>
+    <div class="tw-h-10 tw-items-center tw-flex">
+      <Ui::Text @text={{model.usersStringified}} />
+    </div>
+  </div>
+
+  <div class="tw-my-2">
+    <Ui::Heading @level={{4}}>Created At</Ui::Heading>
+    <div class="tw-h-10 tw-items-center tw-flex">
+      <Ui::Text @text={{model.createdAt}} />
+    </div>
+  </div>
+
+  <div class="tw-my-2">
+    <Ui::Heading @level={{4}}>Updated At</Ui::Heading>
+    <div class="tw-h-10 tw-items-center tw-flex">
+      <Ui::Text @text={{model.updatedAt}} />
+    </div>
+  </div>
+
+  <hr class="tw-my-6">
+
+  <div class="tw-flex tw-justify-between tw-items-center">
+    <Ui::LinkTo @type="tertiary" @route="authenticated.roles.index">
+      Back to roles list
+    </Ui::LinkTo>
+  </div>
+</div>

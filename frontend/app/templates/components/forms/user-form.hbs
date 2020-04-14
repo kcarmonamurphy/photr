@@ -1,9 +1,11 @@
   <Ui::Form @object={{this.changeset}} @onSubmit={{action 'formSubmit'}} as |form|>
-    {{#if isEditing}}
-      <Ui::Heading @level={{2}}>Edit user {{this.changeset.id}}</Ui::Heading>
-    {{else}}
-      <Ui::Heading @level={{2}}>View user {{this.changeset.id}}</Ui::Heading>
-    {{/if}}
+    <Ui::Heading @level={{2}}>
+      {{#if isEditing}}
+        Edit user {{this.changeset.id}}
+      {{else}}
+        User {{this.changeset.id}}
+      {{/if}}
+    </Ui::Heading>
 
     <div class="tw-my-2">
       <Ui::Heading @level={{4}}>Name</Ui::Heading>
@@ -40,8 +42,8 @@
     </div>
 
     <div class="tw-my-2">
-      <Ui::Heading @level={{4}}>Password</Ui::Heading>
       {{#if isEditing}}
+        <Ui::Heading @level={{4}}>New Password</Ui::Heading>
         <form.text-input
           @id="password"
           @name="password"
@@ -50,6 +52,7 @@
           @value={{model.password}}
         />
       {{else}}
+        <Ui::Heading @level={{4}}>Password</Ui::Heading>
         <div class="tw-h-10 tw-items-center tw-flex">
           <Ui::Text @text="*******" />
         </div>
@@ -67,6 +70,17 @@
       <Ui::Heading @level={{4}}>Updated At</Ui::Heading>
       <div class="tw-h-10 tw-items-center tw-flex">
         <Ui::Text @text={{model.updatedAt}} />
+      </div>
+    </div>
+
+    <div class="tw-my-2">
+      <Ui::Heading @level={{4}}>Roles</Ui::Heading>
+      <div class="tw-h-10 tw-items-center tw-flex">
+        {{#each model.roles as |role|}}
+          <Ui::LinkTo @type="tertiary" @route="authenticated.roles.detail" @model={{role}}>
+            {{role.name}}
+          </Ui::LinkTo>
+        {{/each}}
       </div>
     </div>
 
