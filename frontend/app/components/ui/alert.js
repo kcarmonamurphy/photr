@@ -1,8 +1,7 @@
 import Component from '@ember/component';
 
 export default Component.extend({
-  type: 'success',
-
+  kind: 'success',
   tagName: 'div',
 
   init() {
@@ -10,10 +9,10 @@ export default Component.extend({
 
     this.classNames = [];
 
-    if (this.type == 'success') {
+    if (this.kind == 'success') {
       this.classNames.push('tw-bg-green-500');
     }
-    if (this.type == 'danger') {
+    if (this.kind == 'danger') {
       this.classNames.push('tw-bg-red-500')
     }
   }

@@ -1,33 +1,28 @@
-<div class="tw-container tw-mx-auto tw-px-4">
+<div class="tw-container tw-mx-auto tw-p-4">
   <form {{action 'authenticate' on='submit'}}>
-    {{#ui/form-group
-      for="email"
-      label="Login"
-    }}
-      {{ui/text-input
-        id="email"
-        name="email"
-        placeholder="Email"
-        label="Email"
-        value=email
-      }}
-    {{/ui/form-group}}
+    <div class="tw-my-2">
+      <Ui::Heading @level={{4}} @text="Email" />
+      <Ui::TextInput
+        @id="email"
+        @name="email"
+        @placeholder="Email"
+        @value={{email}}
+      />
+    </div>
 
-    {{#ui/form-group
-      for="password"
-      label="Password"
-    }}
-      {{ui/text-input
-        id="password"
-        inputType="password"
-        placeholder="Password"
-        value=password
-      }}
-    {{/ui/form-group}}
+    <div class="tw-my-2">
+      <Ui::Heading @level={{4}} @text="Password" />
+      <Ui::TextInput
+        @id="password"
+        @name="password"
+        @placeholder="Password"
+        @value={{password}}
+        @inputType="password"
+      />
+    </div>
 
-    <button type="submit">Login</button>
-    {{#if errorMessage}}
-      <p>{{errorMessage}}</p>
-    {{/if}}
+    <div class="tw-flex tw-justify-end tw-items-center tw-mt-6">
+      <Ui::Button type="submit">Login</Ui::Button>
+    </div>
   </form>
 </div>

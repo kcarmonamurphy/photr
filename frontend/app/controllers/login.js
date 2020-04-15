@@ -1,26 +1,27 @@
-// app/controllers/login.js
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   session: service(),
+  flashMessages: service(),
 
   actions: {
     async authenticate() {
-      let { email, password } = this.getProperties('email', 'password');
-      try {
-        await this.session.authenticate('authenticator:oauth2', email, password);
-      } catch(error) {
-        if (error.error == 'invalid_grant') {
-          this.set('errorMessage', "Invalid email or password");
-        } else {
-          this.set('errorMessage', "Something went wrong");
-        }
-      }
+      const { email, password } = this.getProperties('email', 'password');
 
-      if (this.session.isAuthenticated) {
-        this.transitionToRoute('authenticated.path')
-      }
+      this.session.authenticate('authenticator:oauth2', email, password)
+        .then(() => {
+          this.transitionToRoute('authenticated.path');
+        })
+        .catch(error => {
+          let errorMessage = 'Something went wrong';
+
+          if (error.error == 'invalid_grant') {
+            errorMessage = 'Invalid email or password';
+          }
+
+          this.flashMessages.danger(errorMessage);
+        })
     }
   }
 });
