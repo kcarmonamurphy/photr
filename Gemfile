@@ -38,7 +38,9 @@ gem 'image_processing', '~> 1.2'
 gem 'jsonapi-resources'
 
 gem 'bcrypt'
-gem 'doorkeeper'
+gem 'doorkeeper', '~> 5.1.0'
+gem 'pundit'
+gem 'request_store'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

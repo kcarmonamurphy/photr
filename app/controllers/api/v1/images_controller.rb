@@ -1,8 +1,6 @@
 module Api
   module V1
     class ImagesController < ApplicationController
-      include JSONAPI::ActsAsResourceController
-
       def upload_attachment
         # binding.pry
         image = Image.find(params[:id])

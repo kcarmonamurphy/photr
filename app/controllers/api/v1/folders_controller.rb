@@ -1,7 +1,6 @@
 module Api
   module V1
     class FoldersController < ApplicationController
-      include JSONAPI::ActsAsResourceController
       include ErrorSerializer
 
       def upload_image
