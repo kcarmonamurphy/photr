@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   get '/pages/home', to: 'pages#home'
 
+  scope '/api/v1' do
+    use_doorkeeper
+  end
+
   resources :images
 
   scope format: false do
@@ -27,7 +31,13 @@ Rails.application.routes.draw do
           end
         end
 
-        jsonapi_resources :users
+        jsonapi_resources :users do
+          jsonapi_relationships
+          collection do
+            get 'me', to: 'users#me'
+          end
+        end
+
         jsonapi_resources :roles
 
         get 'path(/*path)', to: 'path#index'
