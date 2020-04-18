@@ -34,8 +34,6 @@
   <hr class="tw-my-6">
 
   <div class="tw-flex tw-justify-between tw-items-center">
-    <Ui::LinkTo @type="tertiary" @route="authenticated.roles.index">
-      Back to roles list
-    </Ui::LinkTo>
+    <Ui::Button @type="tertiary" onclick={{action "back"}}>Back</Ui::Button>
   </div>
 </div>

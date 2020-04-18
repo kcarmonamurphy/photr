@@ -77,7 +77,7 @@
       <Ui::Heading @level={{4}}>Roles</Ui::Heading>
       <div class="tw-h-10 tw-items-center tw-flex">
         {{#each model.roles as |role|}}
-          <Ui::LinkTo @type="tertiary" @route="authenticated.roles.detail" @model={{role}}>
+          <Ui::LinkTo class="tw-mr-2" @type="tertiary" @route="authenticated.roles.detail" @model={{role}}>
             {{role.name}}
           </Ui::LinkTo>
         {{/each}}
