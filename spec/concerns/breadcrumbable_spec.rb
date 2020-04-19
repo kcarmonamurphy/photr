@@ -20,13 +20,54 @@ shared_examples_for 'breadcrumbable' do
 
   describe '#breadcrumbs' do
     let(:root_folder) { create(:root_folder) }
+    let(:record) { model.last }
 
-    it 'returns an array' do
-      create(model.to_s.underscore.to_sym, parent: root_folder)
+    context 'root folder' do
+      it 'returns an empty array' do
+        expect(root_folder.breadcrumbs).to eq([])
+      end
+    end
 
-      binding.pry
+    context 'one folder in' do
+      before do
+        if model.to_s.underscore.to_sym == :folder
+          create(:folder, parent: root_folder)
+        else
+          create(:image, folder: root_folder)
+        end
+      end
 
-      expect(true).to eq(false)
+      it 'returns an array of length 1' do
+        expect(record.breadcrumbs.length).to eq(1)
+      end
+
+      it 'name and url attributes are equal to name of folder' do
+        expect(record.breadcrumbs.last[:name]).to eq(record.name)
+        expect(record.breadcrumbs.last[:url]).to eq(record.name)
+      end
+    end
+
+    context 'two folders in' do
+      before do
+        containg_folder = create(:folder, parent: root_folder)
+
+        if model.to_s.underscore.to_sym == :folder
+          create(:folder, parent: containg_folder)
+        else
+          create(:image, folder: containg_folder)
+        end
+      end
+
+      it 'returns an array of length 2' do
+        expect(record.breadcrumbs.length).to eq(2)
+      end
+
+      it 'name and url attributes are equal to name of folder' do
+        expect(record.breadcrumbs.last[:name]).to eq(record.name)
+
+        url = "#{model.second_to_last.name}/#{record.name}"
+        expect(record.breadcrumbs.last[:url]).to eq(url)
+      end
     end
   end
 end
