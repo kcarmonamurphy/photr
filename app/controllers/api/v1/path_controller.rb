@@ -1,7 +1,7 @@
 module Api
   module V1
     class PathController < ApplicationController
-      # before_action :set_image, only: [:edit, :update, :show, :destroy]
+      skip_before_action :doorkeeper_authorize!
 
       def index
         path = params[:path] || ""

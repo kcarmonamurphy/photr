@@ -26,10 +26,12 @@ Router.map(function() {
 
     this.route('folders');
     this.route('images');
+
+    this.route('forbidden');
   });
 
   this.route('login');
-  this.route('not-found');
+  this.route('not-found', { path: '/*path' });
 });
 
 export default Router;

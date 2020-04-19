@@ -1,8 +1,6 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      # before_action :doorkeeper_authorize!
-
       skip_after_action :verify_policy_scoped, only: [
         :me
       ]

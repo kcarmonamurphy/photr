@@ -22,23 +22,24 @@ export default Route.extend(AuthenticatedRouteMixin, {
       });
   },
 
-  // actions: {
-  //   error(error) {
-  //     if (error.errors) {
-  //       const errorCode = error.errors.firstObject.status;
-  //       switch(errorCode) {
-  //         case '403':
-  //           this.transitionTo('authenticated.forbidden');
-  //           break;
-  //         default:
-  //           // use '/not-found' instead of authenticated.not-found
-  //           // because of weird bug in Ember
-  //           this.transitionTo('/not-found');
-  //       }
-  //     } else {
-  //       return true;
-  //     }
-  //   }
-  // }
+  actions: {
+    error(error) {
+      debugger
+      if (error.errors) {
+        const errorCode = error.errors.firstObject.status;
+        switch(errorCode) {
+          case '403':
+            this.transitionTo('authenticated.forbidden');
+            break;
+          default:
+            // use '/not-found' instead of authenticated.not-found
+            // because of weird bug in Ember
+            this.transitionTo('/not-found');
+        }
+      } else {
+        return true;
+      }
+    }
+  }
 
 });

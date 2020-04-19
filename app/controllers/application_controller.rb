@@ -34,7 +34,11 @@ class ApplicationController < JSONAPI::ResourceController
   end
 
   def user_not_authorized(exception)
-    Rails.logger.info("user_not_authorized: #{exception}")
+    policy_name = exception.policy.class.to_s.underscore
+  
+    error = "#{policy_name}.#{exception.query}"
+    Rails.logger.info("user_not_authorized: #{error}")
+
     head :forbidden
   end
 end
