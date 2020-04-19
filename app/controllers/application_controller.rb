@@ -4,7 +4,7 @@ class ApplicationController < JSONAPI::ResourceController
   include Pundit
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  # before_action :doorkeeper_authorize!
+  before_action :doorkeeper_authorize!
 
   ROOT_FOLDER = 'root_folder'
 

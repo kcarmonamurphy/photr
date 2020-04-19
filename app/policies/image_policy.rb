@@ -1,17 +1,12 @@
 # frozen_string_literal: true
 
-class UserPolicy < ApplicationPolicy
+class ImagePolicy < ApplicationPolicy
   def index?
     allow_to_perform?
   end
 
   def show?
-    user == record || allow_to_perform?
-  end
-
-  def me?
-    user.present?
-    true
+    allow_to_perform?
   end
 
   def create?
@@ -32,9 +27,7 @@ class UserPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      return scope.where(id: user.id) if user.present?
-
-      scope.none
+      scope.all
     end
   end
 end

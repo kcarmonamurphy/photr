@@ -1,4 +1,4 @@
-class Api::V1::FolderResource < JSONAPI::Resource
+class Api::V1::FolderResource < BaseResource
   attributes :name, :url, :breadcrumbs
   has_many :images
 

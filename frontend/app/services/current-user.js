@@ -9,7 +9,6 @@ export default Service.extend({
   async load(){
     if (this.get('session.isAuthenticated')) {
       let user = await this.get('store').queryRecord('user', { me: true })
-      debugger;
       this.set('user', user);
     } else {
       return RSVP.resolve();

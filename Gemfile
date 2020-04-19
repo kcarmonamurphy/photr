@@ -35,7 +35,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'mini_magick', '~> 4.8'
 gem 'image_processing', '~> 1.2'
 
-gem 'jsonapi-resources'
+gem 'jsonapi-resources', '~> 0.9'
+gem 'jsonapi-authorization'
 
 gem 'bcrypt'
 gem 'doorkeeper', '~> 5.1.0'
