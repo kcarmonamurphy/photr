@@ -1,8 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Folder, :type => :model do
+RSpec.describe Folder, type: :model do
   let(:folder1) { described_class.new }
   let(:folder2) { described_class.new }
+
+  it_behaves_like "breadcrumbable"
 
   it "is not valid without a name" do
     expect(folder1).to_not be_valid

@@ -88,6 +88,13 @@ GEM
       railties (>= 5)
     erubi (1.8.0)
     execjs (2.7.0)
+    factory_bot (5.1.2)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.1.1)
+      factory_bot (~> 5.1.0)
+      railties (>= 4.2.0)
+    faker (2.11.0)
+      i18n (>= 1.6, < 2)
     ffi (1.11.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -177,8 +184,6 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     regexp_parser (1.6.0)
-    request_store (1.5.0)
-      rack (>= 1.4)
     rspec-core (3.8.2)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.4)
@@ -269,6 +274,8 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   doorkeeper (~> 5.1.0)
+  factory_bot_rails
+  faker
   image_processing (~> 1.2)
   jbuilder (~> 2.5)
   jquery-rails
@@ -282,7 +289,6 @@ DEPENDENCIES
   pundit
   rack-cors
   rails (~> 5.2.3)
-  request_store
   rspec-rails
   rspec_junit_formatter
   sass-rails (~> 5.0)

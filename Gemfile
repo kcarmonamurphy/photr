@@ -41,17 +41,12 @@ gem 'jsonapi-authorization'
 gem 'bcrypt'
 gem 'doorkeeper', '~> 5.1.0'
 gem 'pundit'
-gem 'request_store'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
-group :development, :test do
-  gem 'pry-byebug'
-end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
@@ -75,7 +70,10 @@ end
 # Run against the latest stable release
 group :development, :test do
   gem 'rspec-rails'
-  gem "rspec_junit_formatter"
+  gem 'rspec_junit_formatter'
+  gem 'pry-byebug'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
