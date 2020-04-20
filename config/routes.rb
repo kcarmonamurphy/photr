@@ -4,13 +4,11 @@ Rails.application.routes.draw do
 
   default_url_options host: "photr.lvh.me", port: 3000
 
-  root "pages#home"
+  # get '/pages/home', to: 'pages#home'
 
-  get '/pages/home', to: 'pages#home'
-
-  scope '/api/v1' do
-    use_doorkeeper
-  end
+  # scope '/api/v1' do
+  #   use_doorkeeper
+  # end
 
   resources :images
 
@@ -44,4 +42,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  root to: 'frontend#index'
+  get '/*path' => 'frontend#index'
 end

@@ -5,5 +5,8 @@
 
     Setting `disableAnalytics` to true will prevent any data from being sent.
   */
-  "disableAnalytics": false
+  "disableAnalytics": false,
+  "output-path": "../public",
+  "liveReloadBaseUrl": "http://localhost:4200/",
+  "liveReloadJsUrl": "http://localhost:4200/_lr/livereload.js"
 }
