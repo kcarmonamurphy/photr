@@ -59,4 +59,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.before(:each, type: :system) do
+    args = ['disable-gpu', 'no-sandbox', 'disable-dev-shm-usage']
+    args << 'headless' unless ENV['HEADLESS'] == 'false' || ENV['HEADLESS'] == '0'
+    driven_by :selenium, using: :chrome, options: { args: args }
+    Capybara.page.current_window.resize_to(1366, 768)
+  end
 end
