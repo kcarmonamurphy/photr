@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :folder do
-    sequence(:name) { |n| "Folder#{n}" }
+    sequence(:name) { |n| "Folder #{n}" }
 
     factory :root_folder do
       name { "root_folder" }
