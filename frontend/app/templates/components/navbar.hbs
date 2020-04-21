@@ -10,9 +10,7 @@
 
   <span class="tw-mx-3 tw-my-1">
     {{#if session.isAuthenticated}}
-      <a class="tw-text-white tw-cursor-pointer" {{action 'invalidateSession'}}>Logout</a>
-    {{else}}
-      {{#link-to 'login' class="tw-text-white"}}Login{{/link-to}}
+      <Ui::Button onclick={{action 'invalidateSession'}} class="tw-text-white tw-cursor-pointer">Logout</Ui::Button>
     {{/if}}
   </span>
 </div>

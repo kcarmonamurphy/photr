@@ -17,14 +17,12 @@ export default Route.extend(AuthenticatedRouteMixin, {
   _loadCurrentUser() {
     return this.get('currentUser').load()
       .catch((error) => {
-        debugger
         this.get('session').invalidate() 
       });
   },
 
   actions: {
     error(error) {
-      debugger
       if (error.errors) {
         const errorCode = error.errors.firstObject.status;
         switch(errorCode) {
@@ -41,5 +39,4 @@ export default Route.extend(AuthenticatedRouteMixin, {
       }
     }
   }
-
 });
