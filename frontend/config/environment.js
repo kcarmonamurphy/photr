@@ -24,7 +24,7 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth'] = {
-    routeAfterAuthentication: "authenticated.path"
+    routeAfterAuthentication: 'authenticated.path'
   }
 
   if (environment === 'development') {
@@ -33,7 +33,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.apiHost = 'http://localhost:3000';
+    ENV.apiHost = 'http://photr.lvh.me';
+    ENV.apiPort = '3000'
   }
 
   if (environment === 'test') {

@@ -1,5 +1,6 @@
 import OAuth2PasswordGrant from 'ember-simple-auth/authenticators/oauth2-password-grant';
+import ENV from '../config/environment';
 
 export default OAuth2PasswordGrant.extend({
-  serverTokenEndpoint: 'http://photor.lvh.me:3000/oauth/token',
+  serverTokenEndpoint: `${ENV.apiHost}:${ENV.apiPort}/api/v1/oauth/token`,
 });

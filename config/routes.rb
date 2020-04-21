@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
-  use_doorkeeper
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   default_url_options host: "photr.lvh.me", port: 3000
 
-  # get '/pages/home', to: 'pages#home'
-
-  # scope '/api/v1' do
-  #   use_doorkeeper
-  # end
+  scope '/api/v1' do
+    use_doorkeeper
+  end
 
   resources :images
 
@@ -43,6 +38,8 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'frontend#index'
-  get '/*path' => 'frontend#index'
+  root to: 'frontend#index', via: :get
+  get '/*path' => 'frontend#index', constraints: lambda { |req|
+    req.path.exclude? 'rails/active_storage'
+  }
 end
