@@ -3,8 +3,10 @@
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
 version: 2.1
+
 orbs:
   browser-tools: circleci/browser-tools@x.y
+
 jobs:
   build:
     docker:
@@ -22,13 +24,13 @@ jobs:
         environment:
           POSTGRES_USER: kevin
           POSTGRES_DB: test
-    steps:
-      - browser-tools/install-browser-tools
 
     working_directory: ~/repo
 
     steps:
       - checkout
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
 
       # Download and cache dependencies
       - restore_cache:
