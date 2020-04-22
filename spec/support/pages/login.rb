@@ -1,7 +1,6 @@
 require 'support/page'
 
 class LoginPage < Page
-
   def visit_page
     visit 'login'
   end

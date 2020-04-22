@@ -10,6 +10,9 @@
 # ember generates stuff in here
 /public/index.html
 /public/tests/index.html
+/public/*
+public/*
+public/
 
 # Ignore all logfiles and tempfiles.
 /log/*

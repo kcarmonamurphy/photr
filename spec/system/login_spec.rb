@@ -14,7 +14,7 @@ describe 'login', type: :system do
     @login_page.visit_page
 
     @login_page.fill_in_email(valid_user.email)
-    @login_page.fill_in_password(valid_user.password)
+    @login_page.fill_in_password('Password123$')
     @login_page.submit
 
     expect(page).to_not have_content('Something went wrong')
