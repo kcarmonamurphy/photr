@@ -52,11 +52,8 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # yarn install
-      - run:
-          name: build frontend
-          command: |
-            cd frontend && yarn install --non-interactive && cd ../
-            cd frontend && npx ember build && cd ../
+      - run: cd frontend && yarn install --non-interactive && cd ../
+      - run: cd frontend && npx ember build && cd ../
 
       # Database setup
       - run: bundle exec rake db:create
