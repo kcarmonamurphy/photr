@@ -25,8 +25,6 @@ jobs:
           POSTGRES_DB: test
 
     working_directory: ~/repo
-    parallelism: 1
-    
     steps:
       - checkout
       - browser-tools/install-chrome
@@ -53,7 +51,7 @@ jobs:
 
       # yarn install
       - run: cd frontend && yarn install --non-interactive && cd ../
-      - run: cd frontend && npx ember build && cd ../
+      - run: cd frontend && JOBS=1 npx ember build && cd ../
 
       # Database setup
       - run: bundle exec rake db:create
