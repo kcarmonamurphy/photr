@@ -13,6 +13,7 @@
 /public/*
 public/*
 public/
+/public/
 
 # Ignore all logfiles and tempfiles.
 /log/*

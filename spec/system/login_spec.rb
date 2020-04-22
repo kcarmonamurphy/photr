@@ -8,6 +8,8 @@ describe 'login', type: :system do
 
   before do
     @login_page = LoginPage.new
+
+    create(:root_folder)
   end
 
   it 'successfully logs in as user' do
