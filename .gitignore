@@ -8,7 +8,8 @@
 /.bundle
 
 # ember generates stuff in here
-/public
+/public/index.html
+/public/tests/index.html
 
 # Ignore all logfiles and tempfiles.
 /log/*
