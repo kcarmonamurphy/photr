@@ -18,8 +18,11 @@ export default Component.extend({
     async uploadImage(file) {
       const adapter = this.store.adapterFor("folder");
       const url = adapter.buildURL("folder", this.model.id) + "/upload_image";
+      const { access_token } = this.get('session.data.authenticated');
 
-      await file.upload(url).then(response => {
+      await file.upload(url, { headers: {
+        Authorization: `Bearer ${access_token}`
+      }}).then(response => {
         let msg = `${response.body.data.attributes.name} successfully added`;
         this.flashMessages.success(msg);
       }).catch(response => {

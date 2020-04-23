@@ -3,7 +3,7 @@ import Service from '@ember/service';
 import RSVP from 'rsvp';
 
 export default Service.extend({
-  session: service('session'),
+  session: service(),
   store: service(),
 
   async load(){
