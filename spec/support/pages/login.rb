@@ -16,4 +16,11 @@ class LoginPage < Page
   def submit
     click_on "Login"
   end
+
+  def login_as(user)
+    visit_page
+    fill_in_email(user.email)
+    fill_in_password(user.password)
+    submit
+  end
 end

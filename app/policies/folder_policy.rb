@@ -25,6 +25,10 @@ class FolderPolicy < ApplicationPolicy
     true
   end
 
+  def upload_image?
+    allow_to_perform?
+  end
+
   class Scope < Scope
     def resolve
       scope.all

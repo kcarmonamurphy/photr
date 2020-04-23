@@ -3,8 +3,7 @@
 require 'rails_helper'
 
 describe 'login', type: :system do
-  let(:valid_user) { create(:user, email: 'admin@example.com') }
-  let(:user) { create(:user) }
+  let(:user) { create(:user, email: 'admin@example.com') }
 
   before do
     @login_page = LoginPage.new
@@ -15,8 +14,8 @@ describe 'login', type: :system do
   it 'successfully logs in as user' do
     @login_page.visit_page
 
-    @login_page.fill_in_email(valid_user.email)
-    @login_page.fill_in_password('Password123$')
+    @login_page.fill_in_email(user.email)
+    @login_page.fill_in_password(user.password)
     @login_page.submit
 
     expect(page).to_not have_content('Something went wrong')
