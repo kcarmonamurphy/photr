@@ -4,7 +4,8 @@ module Api
       include ErrorSerializer
 
       def upload_image
-        folder = Folder.find(params[:id])
+        folder = policy_scope(Folder).find(params[:id])
+        authorize folder
 
         filename = params[:file].original_filename
 

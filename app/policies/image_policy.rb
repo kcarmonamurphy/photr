@@ -25,6 +25,10 @@ class ImagePolicy < ApplicationPolicy
     true
   end
 
+  def upload_attachment?
+    allow_to_perform?
+  end
+
   class Scope < Scope
     def resolve
       scope.all
