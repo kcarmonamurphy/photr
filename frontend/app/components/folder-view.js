@@ -5,6 +5,7 @@ export default Component.extend({
   store: service(),
   flashMessages: service(),
   fileQueue: service(),
+  session: service(),
 
   flushSettledFiles() {
     let photosQueue = this.fileQueue.find('photos');

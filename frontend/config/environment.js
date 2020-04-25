@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'frontend',
+    modulePrefix: 'photr',
     environment,
     rootURL: '/',
     locationType: 'auto',
