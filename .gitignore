@@ -7,10 +7,6 @@
 # Ignore bundler config.
 /.bundle
 
-# ember generates stuff in here
-/public/index.html
-/public/tests/index.html
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -28,7 +24,7 @@
 node_modules/
 /yarn-error.log
 
-/public/assets
+/public
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
