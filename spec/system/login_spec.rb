@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'login', type: :system do
+describe 'login' do
   let(:user) { create(:user, email: 'admin@example.com') }
 
   before do

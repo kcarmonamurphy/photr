@@ -2,14 +2,14 @@
 
 require 'rails_helper'
 
-describe 'basic navigation', type: :system do
-  let(:user) { create(:user, :full_permissions, email: 'admin@example.com') }
+describe 'basic navigation' do
+  let(:user) { create(:user, :full_permissions) }
+  let(:root_folder) { create(:root_folder) }
 
   before do
-    LoginPage.new.login_as(user)
-
-    root_folder = create(:root_folder)
     @photos = create_list(:image, 4, folder: root_folder)
+
+    LoginPage.new.login_as(user)
   end
 
   it 'should show four images' do
