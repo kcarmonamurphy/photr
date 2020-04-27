@@ -7,9 +7,9 @@ module Api
         image = policy_scope(Image).find(params[:id])
         authorize image
 
-        file = image.file.attach(params[:file])
+        image.file.attach(params[:file])
 
-        if file
+        if image.file.attached?
           render json: serialize_image(image), status: 201
         else
           render json: ErrorSerializer.serialize(image.errors), status: 409

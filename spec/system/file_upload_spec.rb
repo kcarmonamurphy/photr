@@ -19,13 +19,11 @@ describe 'file_upload' do
       expect(page).to have_content('Change the image')
     end
 
-    # it 'uploads a file' do
-    #   page.attach_file('upload-photo', file_fixture('mug.jpg'), visible: false)
+    it 'uploads a file' do
+      page.attach_file('upload-photo', file_fixture('mug.jpg'), visible: false)
 
-    #   sleep 40
-
-    #   expect(page).to have_content('successfully added')
-    # end
+      expect(page).to have_content('successfully added')
+    end
   end
 
   context 'folder view' do

@@ -10,8 +10,9 @@ module Api
         filename = params[:file].original_filename
 
         image = Image.new(name: filename, folder: folder)
-        if image.save
-          file = image.file.attach(params[:file])
+        image.file.attach(params[:file])
+
+        if image.save && image.file.attached?
           render json: serialize_image(image), status: 201
         else
           render json: ErrorSerializer.serialize(image.errors), status: 409

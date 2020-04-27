@@ -19,7 +19,6 @@ export default Component.extend({
       }).catch(response => {
         let msg = response.body.errors.map(arr => arr.title).join('; ')
         this.flashMessages.danger(msg);
-        this.flushSettledFiles()
       })
       
       this.get("model").reload();
