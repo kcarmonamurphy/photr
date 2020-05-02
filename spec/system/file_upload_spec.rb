@@ -8,12 +8,12 @@ describe 'file_upload' do
   let(:root_folder) { create(:root_folder) }
 
   before do
-    VCR.use_cassette('image', :re_record_interval => 7.days) do
+    VCR.use_cassette("#{__FILE__} initial_image", :re_record_interval => 7.days) do
       @image = create(:image, folder: root_folder)
     end
 
-    VCR.use_cassette('tempfile', :re_record_interval => 7.days) do
-      @tempfile = Down.download("https://loremflickr.com/800/500/dog")
+    VCR.use_cassette("#{__FILE__} uploaded_image", :re_record_interval => 7.days) do
+      @uploaded_image = Down.download("https://loremflickr.com/800/600/dog")
     end
 
     LoginPage.new.login_as(user)
@@ -21,7 +21,7 @@ describe 'file_upload' do
 
   context 'folder view' do
     it 'uploads a file' do
-      page.attach_file('upload-photo', @tempfile.path, visible: false)
+      page.attach_file('upload-photo', @uploaded_image.path, visible: false)
       expect(page).to have_content('successfully added')
     end
   end
@@ -34,7 +34,7 @@ describe 'file_upload' do
     end
 
     it 'uploads a file' do
-      page.attach_file('upload-photo', @tempfile.path, visible: false)
+      page.attach_file('upload-photo', @uploaded_image.path, visible: false)
 
       expect(page).to have_content('successfully added')
     end

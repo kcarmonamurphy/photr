@@ -18,7 +18,9 @@ shared_examples_for 'breadcrumbable' do
         if model.to_s.underscore.to_sym == :folder
           create(:folder, parent: root_folder)
         else
-          create(:image, folder: root_folder)
+          VCR.use_cassette("#{__FILE__} image", :re_record_interval => 7.days) do
+            @image = create(:image, folder: root_folder)
+          end
         end
       end
 
@@ -34,12 +36,14 @@ shared_examples_for 'breadcrumbable' do
 
     context 'two folders in' do
       before do
-        containg_folder = create(:folder, parent: root_folder)
+        containing_folder = create(:folder, parent: root_folder)
 
         if model.to_s.underscore.to_sym == :folder
-          create(:folder, parent: containg_folder)
+          create(:folder, parent: containing_folder)
         else
-          create(:image, folder: containg_folder)
+          VCR.use_cassette("#{__FILE__} initial_image", :re_record_interval => 7.days) do
+            @image = create(:image, folder: containing_folder)
+          end
         end
       end
 

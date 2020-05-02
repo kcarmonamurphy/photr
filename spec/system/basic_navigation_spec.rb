@@ -7,7 +7,9 @@ describe 'basic navigation' do
   let(:root_folder) { create(:root_folder) }
 
   before do
-    @photos = create_list(:image, 4, folder: root_folder)
+    VCR.use_cassette("#{__FILE__} images", :re_record_interval => 7.days) do
+      @photos = create_list(:image, 4, folder: root_folder)
+    end
 
     LoginPage.new.login_as(user)
   end

@@ -8,7 +8,11 @@ RSpec.describe Image, type: :model do
 
   describe 'validations' do
     let(:root_folder) { create(:root_folder) }
-    let(:existing_image) { create(:image, name: 'Anything', folder: root_folder) }
+    let(:existing_image) do
+      VCR.use_cassette("#{__FILE__} initial_image", :re_record_interval => 7.days) do
+        @image = create(:image, name: 'Anything', folder: root_folder)
+      end
+    end
 
     it 'is not valid without a name or a parent folder' do
       expect(image1).to_not be_valid
