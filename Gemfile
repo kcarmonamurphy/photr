@@ -7,7 +7,7 @@ gem 'pg' # Use postgresql as the database for Active Record
 gem 'ancestry'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4.2'
+gem 'rails', '~> 6.0.2.2'
 # Use Puma as the app server
 gem 'puma', '~> 4.3.3'
 # Use SCSS for stylesheets
