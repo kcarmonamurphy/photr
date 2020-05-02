@@ -64,7 +64,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'factory_bot_rails'
   gem 'faker'
-
+  gem 'vcr'
+  gem 'webmock'
   gem 'rack-cors'
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
