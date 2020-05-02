@@ -12,6 +12,14 @@ describe 'file_upload' do
     LoginPage.new.login_as(user)
   end
 
+  context 'folder view' do
+    it 'uploads a file' do
+      page.attach_file('upload-photo', file_fixture('cute-kitten.jpg'), visible: false)
+
+      expect(page).to have_content('successfully added')
+    end
+  end
+
   context 'image view' do
     before do
       click_on @image.name
@@ -21,14 +29,6 @@ describe 'file_upload' do
 
     it 'uploads a file' do
       page.attach_file('upload-photo', file_fixture('mug.jpg'), visible: false)
-
-      expect(page).to have_content('successfully added')
-    end
-  end
-
-  context 'folder view' do
-    it 'uploads a file' do
-      page.attach_file('upload-photo', file_fixture('cute-kitten.jpg'), visible: false)
 
       expect(page).to have_content('successfully added')
     end

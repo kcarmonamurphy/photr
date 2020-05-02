@@ -4,13 +4,15 @@ require 'down'
 
 FactoryBot.define do
   factory :image do
-    # sequence(:name) { |n| "Image #{n}" }
+    transient do
+      keyword { 'dog' }
+    end
 
-    before(:create) do |image|
-      tempfile = Down.download('https://loremflickr.com/800/500/dog')
+    sequence(:name) { |n| "Image #{n} of #{keyword}" }
 
-      image.name = tempfile.original_filename
-      image.file.attach(io: File.open(tempfile.path), filename: tempfile.original_filename)
+    before(:create) do |image, evaluator|
+      tempfile = Down.download("https://loremflickr.com/800/500/#{evaluator.keyword}")
+      image.file.attach(io: tempfile, filename: tempfile.original_filename)
     end
   end
 end
