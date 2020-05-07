@@ -32,7 +32,7 @@ gem 'jsonapi-resources', '0.9'
 gem 'jsonapi-authorization', '3.0.2'
 
 gem 'bcrypt'
-gem 'doorkeeper', '~> 5.1.0'
+gem 'doorkeeper', '~> 5.1.1'
 gem 'pundit'
 
 gem 'down'
