@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 
 gem 'jsonapi-resources', '0.9'
 gem 'jsonapi-authorization', '3.0.2'
