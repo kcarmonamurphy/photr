@@ -1,4 +1,4 @@
-{{navbar breadcrumbs=model.breadcrumbs}}
+<Navbar @breadcrumbs={{model.breadcrumbs}} @addFolder={{action "addFolder"}}/>
 
 {{#if isFolderRoute}}
   {{folder-view model=model}}

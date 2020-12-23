@@ -4,7 +4,9 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
   router: service(),
-  pathRoute: computed('router.currentRouteName', function () {
+  store: service(),
+
+  isPathRoute: computed('router.currentRouteName', function () {
     return this.get('router.currentRouteName').startsWith('authenticated.path');
   })
 });

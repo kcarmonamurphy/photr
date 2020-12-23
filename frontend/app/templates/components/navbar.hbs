@@ -1,6 +1,6 @@
 <div class="tw-bg-gray-900 tw-flex tw-items-center tw-justify-between">
   <div class="tw-flex">
-    {{#link-to 'authenticated.path' class="tw-text-white"}}
+    {{#link-to "authenticated.path" class="tw-text-white"}}
       <h1 class="tw-text-xl tw-text-white tw-ml-3 tw-my-1">Photr</h1>
     {{/link-to}}
     {{#if breadcrumbs}}
@@ -10,7 +10,14 @@
 
   <span class="tw-mx-3 tw-my-1">
     {{#if session.isAuthenticated}}
-      <Ui::Button onclick={{action 'invalidateSession'}} class="tw-text-white tw-cursor-pointer">Logout</Ui::Button>
+      <div class="tw-flex tw-items-center tw-justify-between">
+        {{#if addFolder}}
+          <Ui::Button onclick={{action addFolder}} class="tw-px-2">
+            <UiIcon @name="folder-outline-add" @iconColor="white" @iconSize="5" />
+          </Ui::Button>
+        {{/if}}
+        <Ui::Button onclick={{action "invalidateSession"}} class="tw-text-white tw-cursor-pointer">Logout</Ui::Button>
+      </div>
     {{/if}}
   </span>
 </div>

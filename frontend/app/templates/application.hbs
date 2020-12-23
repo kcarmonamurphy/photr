@@ -6,8 +6,8 @@
   {{/each}}
 </div>
 
-{{#unless pathRoute}}
-  {{navbar}}
+{{#unless isPathRoute}}
+  <Navbar />
 {{/unless}}
 
 {{outlet}}

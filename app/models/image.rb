@@ -27,7 +27,12 @@ class Image < ApplicationRecord
   end
 
   def thumbnail
-    url_for self.file.variant(resize: '100x100') if self.file.attached?
+    return unless self.file.attached?
+    if self.file.variable?
+      url_for self.file.variant(resize: '300x300').processed
+    else
+      url_for self.file
+    end
   end
 
   private
