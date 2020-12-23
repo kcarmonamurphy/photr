@@ -8,8 +8,8 @@
         /
       </span>
     {{/if}}
-    {{#link-to 'authenticated.path.wildcard' breadcrumb.url class="tw-text-gray-500"}}
+    <LinkTo @route="authenticated.path.wildcard" @model={{breadcrumb.url}} class="tw-text-gray-500">
       {{breadcrumb.name}}
-    {{/link-to}}
+    </LinkTo>
   {{/each}}
 </span>

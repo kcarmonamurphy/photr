@@ -1,47 +1,43 @@
-{{#file-dropzone name="photos" as |dropzone queue|}}
+<FileDropzone @name="photos" as |dropzone queue|>
   {{#if dropzone.active}}
     {{#if dropzone.valid}}   
-      {{#upload-drop-overlay as |overlay|}}
-        {{#overlay.message opacity="75"}}
+      <UploadDropOverlay as |overlay|>
+        <overlay.message @opacity="75">
           <span class="tw-mr-2">Upload files</span>
-          {{ui-icon name="cloud-upload"}}
-        {{/overlay.message}}
-        {{#overlay.body}}
+          <UiIcon @name="cloud-upload" />
+        </overlay.message>
+        <overlay.body>
           {{yield}}
-        {{/overlay.body}}
-      {{/upload-drop-overlay}}
+        </overlay.body>
+      </UploadDropOverlay>
     {{else}}
-      {{#upload-drop-overlay as |overlay|}}
-        {{#overlay.message opacity="75"}}
+      <UploadDropOverlay as |overlay|>
+        <overlay.message @opacity="75">
           <span class="tw-mr-2">Invalid</span>
-        {{/overlay.message}}
-        {{#overlay.body}}
+        </overlay.message>
+        <overlay.body>
           {{yield}}
-        {{/overlay.body}}
-      {{/upload-drop-overlay}}
+        </overlay.body>
+      </UploadDropOverlay>
     {{/if}}
   {{else if queue.files.length}}
-    {{#upload-drop-overlay as |overlay|}}
-      {{#overlay.message opacity="75"}}
+    <UploadDropOverlay as |overlay|>
+      <overlay.message @opacity="75">
         <span class="tw-mr-2">
           Uploading {{queue.files.length}} files. ({{queue.progress}}%)
         </span>
-        {{ui-icon name="cloud-upload"}}
-      {{/overlay.message}}
-      {{#overlay.body}}
+        <UiIcon @name="cloud-upload" />
+      </overlay.message>
+      <overlay.body>
         {{yield}}
-      {{/overlay.body}}
-    {{/upload-drop-overlay}}
+      </overlay.body>
+    </UploadDropOverlay>
   {{else}}
-    {{#upload-drop-overlay as |overlay|}}
-      {{#overlay.body}}
+    <UploadDropOverlay as |overlay|>
+      <overlay.body>
         {{yield}}
-      {{/overlay.body}}
-    {{/upload-drop-overlay}}
-    {{file-upload name="photos"
-                  for="upload-photo"
-                  accept="image/*"
-                  multiple=true
-                  onfileadd=(action uploadImage)}}
+      </overlay.body>
+    </UploadDropOverlay>
+    <FileUpload @name="photos" @for="upload-photo" @accept="image/*" @multiple={{true}} @onfileadd={{action uploadImage}} />
   {{/if}}
-{{/file-dropzone}}
+</FileDropzone>

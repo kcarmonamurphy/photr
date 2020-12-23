@@ -1,8 +1,8 @@
 <div class="tw-fixed tw-pin-t">
   {{#each flashMessages.queue as |flash|}}
-    {{#flash-message flash=flash as |component flash|}}
+    <FlashMessage @flash={{flash}} as |component flash|>
       <Ui::Alert @kind={{flash.type}} @text={{flash.message}} />
-    {{/flash-message}}
+    </FlashMessage>
   {{/each}}
 </div>
 
@@ -12,4 +12,4 @@
 
 {{outlet}}
 
-{{ui-icon-sprite}}
+<UiIconSprite />

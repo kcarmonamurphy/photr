@@ -1,10 +1,10 @@
 <div class="tw-bg-gray-900 tw-flex tw-items-center tw-justify-between">
   <div class="tw-flex">
-    {{#link-to "authenticated.path" class="tw-text-white"}}
+    <LinkTo @route="authenticated.path" class="tw-text-white">
       <h1 class="tw-text-xl tw-text-white tw-ml-3 tw-my-1">Photr</h1>
-    {{/link-to}}
+    </LinkTo>
     {{#if breadcrumbs}}
-      {{breadcrumb-path breadcrumbs=breadcrumbs}}
+      <BreadcrumbPath @breadcrumbs={{breadcrumbs}} />
     {{/if}}
   </div>
 

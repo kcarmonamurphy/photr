@@ -21,7 +21,7 @@ export default Component.extend({
         this.flashMessages.danger(msg);
       })
       
-      this.get("model").reload();
+      this.model.reload();
     },
   }
 });

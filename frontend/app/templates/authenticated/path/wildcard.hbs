@@ -1,7 +1,7 @@
 <Navbar @breadcrumbs={{model.breadcrumbs}} @addFolder={{action "addFolder"}}/>
 
 {{#if isFolderRoute}}
-  {{folder-view model=model}}
+  <FolderView @model={{model}} />
 {{else if isImageRoute}}
-  {{image-view model=model}}
+  <ImageView @model={{model}} />
 {{/if}}

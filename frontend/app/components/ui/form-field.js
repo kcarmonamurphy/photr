@@ -47,7 +47,7 @@ export default Component.extend({
     if (this.errored) {
       return 'error-100';
     }
-    if (this.get('disabled')) {
+    if (this.disabled) {
       return 'ui-gray-100'
     }
     return 'interactive-100';

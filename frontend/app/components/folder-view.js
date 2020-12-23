@@ -32,7 +32,7 @@ export default Component.extend({
         this.flushSettledFiles()
       })
       
-      return this.get("model").hasMany("images").reload();
+      return this.model.hasMany("images").reload();
     },
   }
 });

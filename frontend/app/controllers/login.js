@@ -7,7 +7,7 @@ export default Controller.extend({
 
   actions: {
     async authenticate() {
-      const { email, password } = this.getProperties('email', 'password');
+      const { email, password } = this;
 
       this.session.authenticate('authenticator:oauth2', email, password)
         .then(() => {

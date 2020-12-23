@@ -14,14 +14,14 @@ export default Component.extend({
   actions: {
     async formSubmit() {
       event.preventDefault();
-      this.submitNewChangeset(this.get('changeset'))
+      this.submitNewChangeset(this.changeset)
     }
   },
 
   submitNewChangeset(changeset) {
     return changeset.save()
       .then((model) => {
-        this.get('router').transitionTo('authenticated.users.detail', model).then(() => {
+        this.router.transitionTo('authenticated.users.detail', model).then(() => {
           let modelName = model.get('constructor.modelName')
           this.flashMessages.success(`${modelName} submitted successfully`);
         })

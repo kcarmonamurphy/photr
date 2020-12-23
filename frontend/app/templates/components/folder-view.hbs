@@ -1,10 +1,10 @@
-{{#upload-dropzone uploadImage=(action "uploadImage")}}
+<UploadDropzone @uploadImage={{action "uploadImage"}}>
   <div class="tw-flex tw-flex-wrap">
     {{#each model.images as |image|}}
-      {{thumbnail/image image=image}}
+      <Thumbnail::Image @image={{image}} />
     {{/each}}
     {{#each model.children as |folder|}}
-      {{thumbnail/folder folder=folder}}
+      <Thumbnail::Folder @folder={{folder}} />
     {{/each}}
   </div>
-{{/upload-dropzone}}
+</UploadDropzone>

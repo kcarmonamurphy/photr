@@ -2,10 +2,6 @@
 
 <img src={{model.filePath}} />
 
-{{#file-upload name="photos"
-                for="upload-photo"
-                accept="image/*"
-                multiple=true
-                onfileadd=(action "uploadImage")}}
+<FileUpload @name="photos" @for="upload-photo" @accept="image/*" @multiple={{true}} @onfileadd={{action "uploadImage"}}>
   <a tabindex=0>Change the image</a>
-{{/file-upload}}
+</FileUpload>

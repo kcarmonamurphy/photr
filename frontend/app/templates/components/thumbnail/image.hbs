@@ -1,6 +1,6 @@
 <div class="tw-w-1/6 tw-bg-gray-200 tw-p-4">
-  {{#link-to 'authenticated.path.wildcard' image.url}}
+  <LinkTo @route="authenticated.path.wildcard" @model={{image.url}}>
     <img class="tw-w-full" alt="thumbnail" src={{image.thumbnail}}>
     <p>{{image.name}}</p>
-  {{/link-to}}
+  </LinkTo>
 </div>
