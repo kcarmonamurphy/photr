@@ -67,7 +67,7 @@ GEM
     crack (0.4.4)
     crass (1.0.6)
     diff-lcs (1.4.4)
-    doorkeeper (5.1.2)
+    doorkeeper (5.4.0)
       railties (>= 5)
     down (5.2.0)
       addressable (~> 2.5)
@@ -160,7 +160,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
-    rake (13.0.1)
+    rake (13.0.3)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -216,7 +216,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tzinfo (1.2.8)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -244,7 +244,7 @@ DEPENDENCIES
   bcrypt
   bootsnap (>= 1.1.0)
   capybara (>= 2.15)
-  doorkeeper (~> 5.1.0)
+  doorkeeper (~> 5.4.0)
   down
   factory_bot_rails
   faker
