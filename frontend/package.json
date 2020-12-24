@@ -48,17 +48,18 @@
     "node": "10.* || >= 12.*"
   },
   "dependencies": {
-    "ember-changeset": "^3.2.1",
-    "ember-cli-flash": "^1.8.1",
-    "ember-cli-postcss": "^5.0.0",
-    "ember-concurrency": "^1.1.7",
-    "ember-file-upload": "3",
-    "ember-inflector": "^3.0.1",
-    "ember-simple-auth": "^2.1.1",
+    "ember-changeset": "^3.10.3",
+    "ember-cli-flash": "^2.1.0",
+    "ember-cli-postcss": "^7.0.0",
+    "ember-concurrency": "^1.2.0",
+    "ember-file-upload": "^3.0.5",
+    "ember-inflector": "^4.0.1",
+    "ember-simple-auth": "^3.0.1",
     "ember-table": "^2.2.3",
-    "ember-truth-helpers": "^2.1.0",
+    "ember-truth-helpers": "^3.0.0",
+    "ember-fetch": "^8.0.2",
     "ember-wormhole": "^0.6.0",
-    "postcss-import": "^12.0.1",
+    "postcss-import": "^14.0.0",
     "tailwindcss": "^1.1.2",
     "tailwindcss-transitions": "^2.1.0"
   }
