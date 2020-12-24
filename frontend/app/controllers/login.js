@@ -16,7 +16,7 @@ export default Controller.extend({
         .catch(error => {
           let errorMessage = 'Something went wrong';
 
-          if (error.error == 'invalid_grant') {
+          if (error.responseJSON.error == 'invalid_grant') {
             errorMessage = 'Invalid email or password';
           }
 
