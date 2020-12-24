@@ -38,6 +38,12 @@ jobs:
             - v1-dependencies-
 
       - run:
+          name: install node v14
+          command: |
+            curl -sSL "https://nodejs.org/dist/v14.15.3/node-v14.15.3-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v14.15.3-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+
+      - run:
           name: install dependencies
           command: |
             gem install bundler -v 2.2.0
