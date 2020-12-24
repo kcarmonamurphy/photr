@@ -1,9 +1,9 @@
-import DS from 'ember-data'
+import JSONAPIAdapter from '@ember-data/adapter/json-api'
 import { inject as service } from '@ember/service'
 import { computed } from '@ember/object'
 import DataAdapterMixin from "ember-simple-auth/mixins/data-adapter-mixin"
 
-export default class ApplicationAdapter extends DS.JSONAPIAdapter.extend(DataAdapterMixin) {
+export default class ApiAdapter extends JSONAPIAdapter.extend(DataAdapterMixin) {
   @service session;
 
   namespace = 'api/v1'
