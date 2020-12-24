@@ -9,19 +9,7 @@ export default class AuthenticatedRoute extends Route.extend(AuthenticatedRouteM
   @service currentUser
 
   model() {
-    return this._loadCurrentUser()
-  }
-
-  sessionAuthenticated() {
-    this._super(...arguments)
-    return this._loadCurrentUser()
-  }
-
-  _loadCurrentUser() {
     return this.currentUser.load()
-      .catch((error) => {
-        this.session.invalidate() 
-      });
   }
 
   @action

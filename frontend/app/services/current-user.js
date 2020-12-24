@@ -7,7 +7,7 @@ export default Service.extend({
   store: service(),
 
   async load(){
-    if (this.get('session.isAuthenticated')) {
+    if (this.session.isAuthenticated) {
       let user = await this.store.queryRecord('user', { me: true })
       this.set('user', user);
     } else {
